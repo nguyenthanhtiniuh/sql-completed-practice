@@ -1,0 +1,25 @@
+--USE TBL
+--GO
+--SELECT * FROM INFORMATION_SCHEMA.TABLES
+
+--SELECT * FROM INFORMATION_SCHEMA.VIEWS
+
+--SELECT * FROM SYS.all_columns
+
+--USE master
+--GO
+--SELECT * FROM MSreplication_options
+--SELECT * FROM spt_fallback_db
+--SELECT * FROM spt_fallback_dev
+--SELECT * FROM spt_fallback_usg
+--SELECT * FROM spt_monitor
+
+
+--5 TIM HIEU CAC LOAI CHI MUC
+--
+use TBL
+go
+CREATE INDEX IDX_CODE
+ON TBLNEWABC(ID,CODE)
+
+DROP INDEX TBLNEWABC.IDX_CODE

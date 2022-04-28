@@ -1,0 +1,2 @@
+-- -Lập một số chứng từ hoá đơn bán các mặt hàng theo dõi theo từng nhân viên kinh doanh.
+-- (lập nhiều phiếu nhiều ngày và nhiều đối tượng khác nhau ).

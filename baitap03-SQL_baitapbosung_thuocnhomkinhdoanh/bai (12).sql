@@ -1,0 +1,1 @@
+-- 12.Copy dữ liệu của #tblCt qua #CtHdCopy rồi xoá hết dữ liệu của #tblCt.

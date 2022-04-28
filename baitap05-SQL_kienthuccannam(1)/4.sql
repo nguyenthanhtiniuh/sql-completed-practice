@@ -1,0 +1,1 @@
+-- 4.Danh mục các khách hàng hiện tại của công ty B20Customer(Code, Name)

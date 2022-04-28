@@ -1,0 +1,1 @@
+-- 4.Liệt kê ra 3 mặt hàng bán chạy nhất trong tháng 9/2010. ( nhiều người mua nhất; Ma_Vt, Ten_Vt, Sl_Ban, Tong_Tien).

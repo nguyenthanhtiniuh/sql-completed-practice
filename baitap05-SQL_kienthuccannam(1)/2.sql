@@ -1,0 +1,1 @@
+-- 2.Danh mục các bộ phận tham gia bán hàng B20Dept(Code, Name)

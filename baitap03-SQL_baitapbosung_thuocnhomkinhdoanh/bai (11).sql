@@ -1,0 +1,1 @@
+-- 11.Update dữ liệu cho các field Ten_Vt, Ten_Kho, Ten_Dt của bảng #tblCt.

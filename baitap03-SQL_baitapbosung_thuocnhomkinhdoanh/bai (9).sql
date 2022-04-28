@@ -1,0 +1,1 @@
+-- 9.INSERT dữ liệu của các chứng từ hoá đơn, chứng từ nhập mua và chi phí vào bản tạm #tblCt.

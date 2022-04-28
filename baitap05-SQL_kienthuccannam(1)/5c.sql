@@ -1,0 +1,10 @@
+--DONE--5C.TIM NHAN VIEN KHONG BAN DUOC HANG TRONG THANG KINH DOANH CUOI CUNG NAM 2014
+USE B30
+GO
+DECLARE @THANGKINHDOANHCUOI INT = 12
+SELECT B30AccDocSales.Employeecode, EmployeeName,Quantity, Amount,DocDate
+FROM B30AccDocSales 
+JOIN B20Employee 
+ON B30AccDocSales.Employeecode=B20Employee.EmployeeCode
+where Quantity=0 and MONTH(DocDate) = @THANGKINHDOANHCUOI
+AND YEAR(DocDate)=2014

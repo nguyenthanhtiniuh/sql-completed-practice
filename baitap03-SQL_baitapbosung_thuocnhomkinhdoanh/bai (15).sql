@@ -1,0 +1,1 @@
+-- 15.Xem dữ liệu của 2 bảng và xoá đi 2 bảng tạm.

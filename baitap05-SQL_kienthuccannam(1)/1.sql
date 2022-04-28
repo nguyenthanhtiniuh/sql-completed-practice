@@ -1,0 +1,10 @@
+-- 1.Chi tiết hóa đơn bán hàng 
+-- B30AccDocSales
+-- (Stt, 
+-- DocDate, 
+-- ItemCode, 
+-- CustomerCode, 
+-- EmployeeCode, 
+-- DeptCode, 
+-- Quantity, 
+-- Amount)

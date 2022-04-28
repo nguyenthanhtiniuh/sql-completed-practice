@@ -1,0 +1,1 @@
+-- 3.Liệt kê ra các hoá đơn do NV kinh doanh Nguyễn Văn A bán vào tháng 9/2010. (Ngay_Ct, So_Ct, Ma_CbNv, Ten_CbNv, Tong_Tien)

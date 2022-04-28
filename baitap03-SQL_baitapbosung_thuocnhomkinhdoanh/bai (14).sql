@@ -1,0 +1,1 @@
+-- 14.INSERT dữ liệu của các chứng từ phiếu chi, phiếu thu, báo nợ, báo có vào #tblCt.

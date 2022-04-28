@@ -1,0 +1,1 @@
+-- 7.Liệt kê ra các nhân viên chờ nghỉ hưu ( nam >=55 và nữ >=50) .

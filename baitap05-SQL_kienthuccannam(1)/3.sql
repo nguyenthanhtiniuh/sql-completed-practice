@@ -1,0 +1,1 @@
+-- 3.Danh mục các nhân viên bán hàng B20Employee(Code, Name, ManagerCode)

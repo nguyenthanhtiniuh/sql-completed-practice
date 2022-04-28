@@ -1,0 +1,1 @@
+-- 5.Thống kê doanh số bán hàng của từng nhân viên kinh doanh trong tháng 9/2010 và tổng doanh số của phòng kinh doanh là bao nhiêu. ( 1.5% trên tổng số tiền kí hoá đơn của từng nhân viên) .
