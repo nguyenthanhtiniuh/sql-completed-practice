@@ -32,15 +32,12 @@ SELECT
 5,'BERGSNTT'
 
 --SELECT * FROM #MSSQLTips
-
+--lay du lieu chung cua 2 bang voi tu khoa INTERSECT
 SELECT CustomerCode
 FROM #MSSQLTips
---WHERE nhacung_id > 500
 INTERSECT 
 SELECT CustomerCode
 FROM B20Customer
---WHERE congty_ten in (‘Apple’, ‘Microsoft’, ‘SQL Server’)
---ORDER BY 2;
 --b. Tim cac cot co ten giong nhau nhung co khai bao kieu du lieu khac nhau.
 --CACH 1
 SELECT name 
@@ -62,11 +59,11 @@ GROUP BY name
 HAVING COUNT(*) = 2
 
 --CACH 3
-SELECT t1.COLUMN_NAME 
+SELECT t1.COLUMN_NAME,t1.DATA_TYPE AS DATA_TYPET1 ,t2.DATA_TYPE AS DATA_TYPET2
 FROM        INFORMATION_SCHEMA.COLUMNS AS t1 
 INNER JOIN  INFORMATION_SCHEMA.COLUMNS AS t2 
 ON t1.COLUMN_NAME = t2.COLUMN_NAME 
-WHERE t1.TABLE_NAME = 'B20Customer' AND t2.TABLE_NAME = 'B30AccDocSales'
+WHERE t1.TABLE_NAME = 'B20Customer' AND t2.TABLE_NAME = 'B30AccDocSales' AND t1.DATA_TYPE LIKE t2.DATA_TYPE 
 
 SELECT * FROM INFORMATION_SCHEMA.COLUMNS 
 --c. Tim cac cot co ten giong nhau cung khai bao kieu du lieu NVARCHAR, nhung do dai khai bao khac nhau
