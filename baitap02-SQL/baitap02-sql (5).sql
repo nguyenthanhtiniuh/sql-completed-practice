@@ -6,9 +6,9 @@ IF OBJECT_ID('Tempdb..#tblResourceA') IS NOT NULL DROP TABLE #tblResourceA
 CREATE TABLE #tblResourceA(
 Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 Code nvarchar(50),
-_OPEN INT
+_Open INT
 )
-INSERT INTO #tblResourceA(Code,_OPEN)
+INSERT INTO #tblResourceA(Code,_Open)
 SELECT 
 'A',1
 UNION ALL 
@@ -35,26 +35,10 @@ SELECT * FROM #tblResourceB
 
 IF OBJECT_ID('Tempdb..#tblResult') IS NOT NULL DROP TABLE #tblResult
 CREATE TABLE #tblResult(
-_ID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-_CODE nvarchar(50),
+ID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+CODE nvarchar(50),
 _OPEN INT,
-_INPUT INT,
+INPUT INT,
 _OUTPUT INT,
 _CLOSE INT
 )
-
-;WITH CMT AS (
-SELECT * FROM #tblResourceB
-)
-INSERT INTO #tblResult(_OPEN,_CODE,_INPUT,_OUTPUT)
-SELECT _OPEN,CMT.Code,[INPUT],[OUTPUT] FROM CMT 
-FULL OUTER JOIN #tblResourceA ON CMT.Code=#tblResourceA.Code
-
-
-UPDATE #tblResult
-SET _CLOSE=_OPEN+_INPUT-_OUTPUT
-
-UPDATE #tblResult
-SET _OPEN=_CLOSE-1
-
-SELECT * FROM #tblResult

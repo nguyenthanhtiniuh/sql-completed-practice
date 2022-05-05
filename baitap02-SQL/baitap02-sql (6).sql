@@ -1,95 +1,105 @@
 USE TBL
 GO
 IF OBJECT_ID('Tempdb..#tblResourceA') IS NOT NULL DROP TABLE #tblResourceA
-CREATE TABLE #tblResourceA(
-_DATEA DATE,
-_CODEA NVARCHAR(50),
-_NAMEA NVARCHAR(50)
+CREATE TABLE #tblResourceA
+(
+    DateRA DATE,
+    CodeRA NVARCHAR(50),
+    NameRA NVARCHAR(50)
 )
 
 INSERT INTO #tblResourceA
-SELECT '20130101','A','Mr.NAM'
+    SELECT '20130101', 'A', 'Mr.NAM'
 UNION ALL
-SELECT
-'20130515','A','Mr.TUNG'
+    SELECT
+        '20130515', 'A', 'Mr.TUNG'
 UNION ALL
-SELECT
-'20130201','B','Mrs.LAM'
+    SELECT
+        '20130201', 'B', 'Mrs.LAM'
 UNION ALL
-SELECT
-'20130430','B','Mrs.HOA'
+    SELECT
+        '20130430', 'B', 'Mrs.HOA'
 UNION ALL
-SELECT
-'20130414','C','Ms.HANH'
+    SELECT
+        '20130414', 'C', 'Ms.HANH'
 UNION ALL
-SELECT
-'20130623','C','Ms.HAN'
+    SELECT
+        '20130623', 'C', 'Ms.HAN'
 UNION ALL
-SELECT
-'20130830','C','Ms.HUONG'
-SELECT * FROM #tblResourceA
+    SELECT
+        '20130830', 'C', 'Ms.HUONG'
+SELECT *
+FROM #tblResourceA
 
 IF OBJECT_ID('Tempdb..#tblResourceB') IS NOT NULL DROP TABLE #tblResourceB
-CREATE TABLE #tblResourceB(
-_DATEB DATE,
-_CODEB NVARCHAR(50)
+CREATE TABLE #tblResourceB
+(
+    DateRB DATE,
+    CodeRB NVARCHAR(50)
 )
 
 INSERT INTO #tblResourceB
-SELECT 
-'20130101','A' 
+    SELECT
+        '20130101', 'A'
 UNION ALL
-SELECT
-'20130311','A'
+    SELECT
+        '20130311', 'A'
 UNION ALL
-SELECT
-'20130615','A'
+    SELECT
+        '20130615', 'A'
 UNION ALL
-SELECT
-'20130101','B'
+    SELECT
+        '20130101', 'B'
 UNION ALL
-SELECT
-'20130214','B'
+    SELECT
+        '20130214', 'B'
 UNION ALL
-SELECT
-'20130502','B'
+    SELECT
+        '20130502', 'B'
 UNION ALL
-SELECT
-'20130211','C'
+    SELECT
+        '20130211', 'C'
 UNION ALL
-SELECT
-'20130418','C'
+    SELECT
+        '20130418', 'C'
 UNION ALL
-SELECT
-'20130817','C'
-
-SELECT * FROM #tblResourceB
+    SELECT
+        '20130817', 'C'
+SELECT *
+FROM #tblResourceB
 
 IF OBJECT_ID('Tempdb..#tblResult') IS NOT NULL DROP TABLE #tblResult
-CREATE TABLE #tblResult(
-_DATERESULT DATE,
-_CODERESULT NVARCHAR(50),
-_NAMERESULT NVARCHAR(50))
+CREATE TABLE #tblResult
+(
+    DateResult DATE,
+    CodeResult NVARCHAR(50),
+    Nameresult NVARCHAR(50)
+)
 
-;WITH TBL AS
-(SELECT * 
-FROM #tblResourceB B
-OUTER APPLY( SELECT * FROM #tblResourceA A
-WHERE B._CODEB = A._CODEA) ORD)
-INSERT INTO #TBLRESULT(_DATERESULT,_CODERESULT,_NAMERESULT)
-SELECT _DATEB,_CODEB,_NAMEA FROM TBL
-ORDER BY _CODEB,_NAMEA
+SELECT distinct FORMAT (#tblResourceB.DateRB, 'dd-MM-yyyy') as date,
+    [DateRB],
+    [CodeRB], NameRA
+FROM #tblResourceB
+    right JOIN #tblResourceA
+    ON #tblResourceB.CodeRB=#tblResourceA.CodeRA
+    WHERE #tblResourceA.DateRA=#tblResourceB.DateRB
+ORDER by [date]
 
-SELECT * FROM #TBLRESULT
-
-SELECT DISTINCT _NAMERESULT FROM #TBLRESULT
-ORDER BY _CODERESULT,_NAMERESULT
---TRUNCATE TABLE #TBLRESULT
-
-SELECT *
-FROM #tblResourceB B
-OUTER APPLY( SELECT * FROM #tblResourceA A
-WHERE B._CODEB = A._CODEA) ORD
-ORDER BY 
---_DATEB,_CODEB,_DATEA,
-_CODEA,_NAMEA
+-- ;WITH
+--     tbl
+--     AS
+    
+--     (
+--         SELECT distinct FORMAT (#tblResourceB.DateRB, 'dd-MM-yyyy') as date,
+--             [DateRB],
+--             [CodeRB], NameRA
+--         FROM #tblResourceB
+--             right JOIN #tblResourceA
+--             ON #tblResourceB.CodeRB=#tblResourceA.CodeRA
+--     )
+-- SELECT *
+-- FROM tbl
+--     INNER JOIN #tblResourceB
+--     ON tbl.[DateRB]=#tblResourceB.DateRB
+-- WHERE tbl.DateRB=#tblResourceB.DateRB
+-- HAVING #tblResourceA.DateRA<#tblResourceB.DateRB
