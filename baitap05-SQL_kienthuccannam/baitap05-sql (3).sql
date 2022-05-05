@@ -6,7 +6,7 @@ các ký tự 0 ở phía trước nó, và phần giữa là ký tự “-”.
 Nếu cho chuỗi “12A” thì chuỗi cần tìm “A-00012”.
 
 begin
-declare @str nvarchar(7) = '99999A';
+declare @str nvarchar(7) = '99999ABC';
 DECLARE @RESULT nvarchar(8);
 --select REVERSE(@str) as string
 declare @lastLetterOfStr nvarchar= LEFT(REVERSE(@str),1)

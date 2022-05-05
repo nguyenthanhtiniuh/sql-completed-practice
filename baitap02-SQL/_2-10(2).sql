@@ -37,6 +37,7 @@ UNION ALL
 SELECT
 'F3',	'D',	120
 
+SELECT * FROM #tblResource1
 
 INSERT INTO #tblResource2
 SELECT 
@@ -48,7 +49,7 @@ UNION ALL
 SELECT
 'F3',600
 
-SELECT * FROM #tblResource1 
+SELECT * FROM #tblResource2
 --ORDER BY Class,Code
 --SELECT * FROM #tblResource2 ORDER BY Class
 SELECT T2.CLASS,

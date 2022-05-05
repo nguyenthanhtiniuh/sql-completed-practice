@@ -8,7 +8,7 @@
 USE B30
 GO
 
-INSERT INTO B30AccDocSales(ItemCode,CustomerCode)
+SELECT * FROM B30AccDocSales
 --values
 --(SELECT  ItemCode
 --FROM B20Item),

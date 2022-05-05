@@ -1,77 +1,77 @@
-USE [B30]
-GO
-/****** Object:  Table [dbo].[B20Customer]    Script Date: 4/23/2022 11:59:44 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[B20Customer](
-	[CustomerCode] [nvarchar](30) NULL,
-	[CustomerName] [nvarchar](30) NULL
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[B20Dept]    Script Date: 4/23/2022 11:59:44 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[B20Dept](
-	[DeptCode] [nvarchar](30) NULL,
-	[DeptName] [nvarchar](30) NULL
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[B20Employee]    Script Date: 4/23/2022 11:59:44 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[B20Employee](
-	[EmployeeCode] [nvarchar](30) NULL,
-	[EmployeeName] [nvarchar](30) NULL,
-	[ManagerCode] [nvarchar](100) NULL
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[B20Item]    Script Date: 4/23/2022 11:59:44 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[B20Item](
-	[ItemCode] [nvarchar](30) NULL,
-	[ItemName] [nvarchar](40) NULL
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[B20Prices]    Script Date: 4/23/2022 11:59:44 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[B20Prices](
-	[ItemCode] [nvarchar](30) NULL,
-	[EffectiveDate] [date] NULL,
-	[Amount] [int] NULL
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[B30AccDocSales]    Script Date: 4/23/2022 11:59:44 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[B30AccDocSales](
-	[STT] [int] IDENTITY(1,1) NOT NULL,
-	[ItemCode] [nvarchar](30) NULL,
-	[CustomerCode] [nvarchar](30) NULL,
-	[Employeecode] [nvarchar](30) NULL,
-	[DeptCode] [nvarchar](30) NULL,
-	[Quantity] [int] NULL,
-	[Amount] [int] NULL,
-	[DocDate] [date] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[STT] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
+--USE [B30]
+--GO
+--/****** Object:  Table [dbo].[B20Customer]    Script Date: 4/23/2022 11:59:44 AM ******/
+--SET ANSI_NULLS ON
+--GO
+--SET QUOTED_IDENTIFIER ON
+--GO
+--CREATE TABLE [dbo].[B20Customer](
+--	[CustomerCode] [nvarchar](30) NULL,
+--	[CustomerName] [nvarchar](30) NULL
+--) ON [PRIMARY]
+--GO
+--/****** Object:  Table [dbo].[B20Dept]    Script Date: 4/23/2022 11:59:44 AM ******/
+--SET ANSI_NULLS ON
+--GO
+--SET QUOTED_IDENTIFIER ON
+--GO
+--CREATE TABLE [dbo].[B20Dept](
+--	[DeptCode] [nvarchar](30) NULL,
+--	[DeptName] [nvarchar](30) NULL
+--) ON [PRIMARY]
+--GO
+--/****** Object:  Table [dbo].[B20Employee]    Script Date: 4/23/2022 11:59:44 AM ******/
+--SET ANSI_NULLS ON
+--GO
+--SET QUOTED_IDENTIFIER ON
+--GO
+--CREATE TABLE [dbo].[B20Employee](
+--	[EmployeeCode] [nvarchar](30) NULL,
+--	[EmployeeName] [nvarchar](30) NULL,
+--	[ManagerCode] [nvarchar](100) NULL
+--) ON [PRIMARY]
+--GO
+--/****** Object:  Table [dbo].[B20Item]    Script Date: 4/23/2022 11:59:44 AM ******/
+--SET ANSI_NULLS ON
+--GO
+--SET QUOTED_IDENTIFIER ON
+--GO
+--CREATE TABLE [dbo].[B20Item](
+--	[ItemCode] [nvarchar](30) NULL,
+--	[ItemName] [nvarchar](40) NULL
+--) ON [PRIMARY]
+--GO
+--/****** Object:  Table [dbo].[B20Prices]    Script Date: 4/23/2022 11:59:44 AM ******/
+--SET ANSI_NULLS ON
+--GO
+--SET QUOTED_IDENTIFIER ON
+--GO
+--CREATE TABLE [dbo].[B20Prices](
+--	[ItemCode] [nvarchar](30) NULL,
+--	[EffectiveDate] [date] NULL,
+--	[Amount] [int] NULL
+--) ON [PRIMARY]
+--GO
+--/****** Object:  Table [dbo].[B30AccDocSales]    Script Date: 4/23/2022 11:59:44 AM ******/
+--SET ANSI_NULLS ON
+--GO
+--SET QUOTED_IDENTIFIER ON
+--GO
+--CREATE TABLE [dbo].[B30AccDocSales](
+--	[STT] [int] IDENTITY(1,1) NOT NULL,
+--	[ItemCode] [nvarchar](30) NULL,
+--	[CustomerCode] [nvarchar](30) NULL,
+--	[Employeecode] [nvarchar](30) NULL,
+--	[DeptCode] [nvarchar](30) NULL,
+--	[Quantity] [int] NULL,
+--	[Amount] [int] NULL,
+--	[DocDate] [date] NULL,
+--PRIMARY KEY CLUSTERED 
+--(
+--	[STT] ASC
+--)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+--) ON [PRIMARY]
+--GO
 INSERT [dbo].[B20Customer] ([CustomerCode], [CustomerName]) VALUES (N'ALFKI', N'Maria Anders')
 GO
 INSERT [dbo].[B20Customer] ([CustomerCode], [CustomerName]) VALUES (N'ANATR', N'Ana Trujillo')
@@ -705,10 +705,3 @@ GO
 INSERT [dbo].[B30AccDocSales] ([STT], [ItemCode], [CustomerCode], [Employeecode], [DeptCode], [Quantity], [Amount], [DocDate]) VALUES (48, N'3', N'BONAP', N'98122', NULL, 65, 500, CAST(N'2014-07-02' AS Date))
 GO
 INSERT [dbo].[B30AccDocSales] ([STT], [ItemCode], [CustomerCode], [Employeecode], [DeptCode], [Quantity], [Amount], [DocDate]) VALUES (49, N'4', N'BONAP', N'98122', NULL, 65, 0, CAST(N'2014-07-02' AS Date))
-GO
-INSERT [dbo].[B30AccDocSales] ([STT], [ItemCode], [CustomerCode], [Employeecode], [DeptCode], [Quantity], [Amount], [DocDate]) VALUES (2161, N'5', N'NNN', N'toan', NULL, 0, 0, CAST(N'2014-06-01' AS Date))
-GO
-INSERT [dbo].[B30AccDocSales] ([STT], [ItemCode], [CustomerCode], [Employeecode], [DeptCode], [Quantity], [Amount], [DocDate]) VALUES (2162, N'7', N'NNN', N'toan', NULL, 5, NULL, CAST(N'2014-07-02' AS Date))
-GO
-SET IDENTITY_INSERT [dbo].[B30AccDocSales] OFF
-GO
