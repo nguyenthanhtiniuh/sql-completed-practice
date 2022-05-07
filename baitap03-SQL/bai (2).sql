@@ -1,10 +1,10 @@
 -- 2.Liệt kê ra các hoá đơn trong tháng 9/2010 (Ngay_Ct, So_Ct, Dien_Giai0, Doanh thu, tiền thuế, Tổng tiền).
-SELECT *
-from HoaDon
+-- SELECT *
+-- from HoaDon
 
-update HoaDon
-set Ngay = '2010-09-01'
-WHERE Manhanvien like 'nv03'
+-- update HoaDon
+-- set Ngay = '2010-09-01'
+-- WHERE Manhanvien like 'nv03'
 
 select [HoaDon].Sohd,
     [Ngay],
@@ -17,4 +17,5 @@ select [HoaDon].Sohd,
 from Hoadon
     JOIN HoaDonChiTiet
     ON HoaDon.Sohd=HoaDonChiTiet.Sohd
-WHERE MONTH(Ngay) = 9 AND YEAR(Ngay) = 2010
+WHERE Ngay
+between '2010-09-01 00:00:00.000' and '2010-09-30 00:00:00.000'
