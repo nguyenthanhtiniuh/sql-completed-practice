@@ -1,6 +1,7 @@
 --4-9
 USE TBL
 GO
+DROP TABLE IF EXISTS #tblResource
 CREATE TABLE #tblResource(
 Class nvarchar(50),
 A INT,
@@ -10,9 +11,10 @@ D INT)
 
 -- TRUNCATE TABLE tblResource
 
+
 INSERT INTO #tblResource
 VALUES ('F1',100,100,NULL,NULL),
-('F2',NULL,NULL,220,300),
+('F2',NULL,NULL,520,300),
 ('F3',150,NULL,NULL,120)
 
 SELECT * FROM #tblResource
