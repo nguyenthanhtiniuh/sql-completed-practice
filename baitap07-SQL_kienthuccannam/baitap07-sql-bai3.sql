@@ -6,7 +6,7 @@ SELECT
   tables.name AS TableName
 FROM
   sys.columns
-JOIN sys.tables ON
+  JOIN sys.tables ON
   sys.columns.object_id = tables.object_id
 WHERE
   sys.columns.name LIKE '%CUSTOMERCODE%'
@@ -24,8 +24,8 @@ SELECT
   tables.name AS TableName
 FROM
   sys.columns
-JOIN sys.tables 
-ON
+  JOIN sys.tables
+  ON
   sys.columns.object_id = tables.object_id
 WHERE
   sys.columns.name LIKE '%CUSTOMERCODE%'
