@@ -1,36 +1,42 @@
 --4C--THEM DU LIEU NGAU NHIEN 50 KHACH HANG
 --VOI MA SO NGAU NHIEN THEO QUY TAC: KY TU DAU NGAU NHIEN
 --TRONG BANG KY TU CHU CAI VA 4 KY TU SAU NGAU NHIEN TRONG KHOANG TU "0001" -"9999"
-
 USE B30
 GO
 
-
-
-DECLARE @BEGIN_NUMBER_CHAR_ASCII INT=65;
-DECLARE @END_NUMBER_CHAR_ASCII INT=90;
+-- DECLARE @_BeginNumberCharInASCII INT=65;
+-- DECLARE @_EndNumberCharInASCII INT=90;
 --DEC HEX CHAR
 --65  41  A
 --90 5A  Z
 
 --97 61 a
 --122 7A z
-DECLARE @A INT;
-DECLARE @B INT;
-SET @A = 0001
-SET @B = 9999
+-- DECLARE @_BeginNumberInRangeToRanDom INT
+-- SET @_BeginNumberInRangeToRanDom = 0001
+-- DECLARE @_EndNumberInRangeToRanDom INT
+-- SET @_EndNumberInRangeToRanDom = 9999
 
-DECLARE @COUNT INT =1;
-WHILE @COUNT<=50
-BEGIN
-INSERT INTO B20Customer(CustomerCode)
---DONE
---VALUES (CHAR(RAND()*(@END_NUMBER_CHAR_ASCII-@BEGIN_NUMBER_CHAR_ASCII)+@BEGIN_NUMBER_CHAR_ASCII) + cast( @A + FLOOR(RAND() * (@B + 1 - @A))as nvarchar))
-VALUES ('A' + CAST(1+FLOOR(RAND()*(10+1-1))AS nvarchar))
-SET @COUNT=@COUNT+1
-END
+-- DECLARE @COUNT INT =1;
+-- WHILE @COUNT<=50
+-- BEGIN
+--     select CHAR(RAND()*(@_EndNumberCharInASCII-@_BeginNumberCharInASCII)+@_BeginNumberCharInASCII) 
+-- + cast(Cast(RAND()*(@_EndNumberInRangeToRanDom-@_BeginNumberInRangeToRanDom)+@_BeginNumberInRangeToRanDom as int)as char);
 
-SELECT  CustomerCode
+--     SET @COUNT=@COUNT+1
+-- END
+
+-- Drop a table called '#tblB20Customer' in schema 'dbo'
+-- Drop the table if it already exists
+IF OBJECT_ID('[dbo].[#tblB20Customer]', 'U') IS NOT NULL
+DROP TABLE [dbo].[#tblB20Customer]
+GO
+SELECT *
+into #tblB20Customer
 FROM B20Customer
 
---truncate table b20customer
+SELECT *
+FROM #tblB20Customer
+
+-- Delete rows from table '[TableName]' in schema '[dbo]'
+-- DELETE top(20) FROM #tblB20Customer

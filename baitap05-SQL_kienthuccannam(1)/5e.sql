@@ -2,8 +2,7 @@
 USE B30
 SELECT *
 FROM B30AccDocSales
-
-
+WHERE YEAR(DocDate)= 2014
 
 SELECT TOP 3
     *

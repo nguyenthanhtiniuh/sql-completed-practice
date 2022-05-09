@@ -1,14 +1,16 @@
 --5l. Tim mat hang ban so luong nhieu nhat trong tung nam
 USE B30
 GO
-DECLARE @YEAR_INPUT INT = 2014;
+DECLARE @_NamNhapVao INT = 2014
+DECLARE @_MatHangCoSoLuongBanNhieuNhat int =
+(select MAX(Quantity)
+from B30AccDocSales
+WHERE YEAR(DocDate)=@_NamNhapVao)
 
---SELECT MAX(Quantity) FROM B30AccDocSales 
---WHERE YEAR(DocDate)=@YEAR_INPUT
+SELECT @_MatHangCoSoLuongBanNhieuNhat as MatHangCoSoLuongBanNhieuNhat
 
-SELECT B30AccDocSales.ItemCode,ItemName,Quantity,YEAR(DocDate) AS NAM
+-- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
+SELECT *
 FROM B30AccDocSales
-JOIN B20Item
-ON B30AccDocSales.ItemCode=B20Item.ItemCode
-WHERE YEAR(DocDate)=@YEAR_INPUT AND
-B30AccDocSales.Quantity=(SELECT MAX(Quantity) FROM B30AccDocSales WHERE YEAR(DocDate)=@YEAR_INPUT)
+WHERE YEAR(DocDate)  = @_NamNhapVao AND
+    Quantity = @_MatHangCoSoLuongBanNhieuNhat

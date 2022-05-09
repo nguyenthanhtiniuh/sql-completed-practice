@@ -1,122 +1,145 @@
---BAI TAP 3: 
---VIET T-SQL DE THE HIEN GIA TRI KET QUAN NHU BANG BEN DUOI
---TAO CAC BANG TAM 
---#B30ACCDOC(ID,DOCDATE,DOCNO,DESCRIPTION,CUSTOMERCODE) VA
---#B30ACCDOCSALES(ID,ITEMCODE,QUANTITY,AMOUNT),
---#B20CUSTOMER(CODE,NAME),
---#B20ITEM(CODE,NAME)
-USE TBL
+--bai tap 3: 
+--viet t-sql de the hien gia tri ket quan nhu bang ben duoi
+--tao cac bang tam 
+--#b30accdoc(id,docdate,docno,description,customercode) va
+--#b30accdocsales(id,itemcode,quantity,amount),
+--#b20customer(code,name),
+--#b20item(code,name)
+use tbl
 
-IF OBJECT_ID('Tempdb..#B30ACCDOC') IS NOT NULL DROP TABLE #B30ACCDOC
-CREATE TABLE #B30ACCDOC(
-	ID INT IDENTITY(1,1),
-	DOCDATE DATE,
-	DOCNO INT,
-	DESCIPTTION NVARCHAR(MAX),
-	CUSTOMERCODE NVARCHAR(30)
+if object_id('tempdb..#b30accdoc') is not null drop table #b30accdoc
+create table #b30accdoc
+(
+	id int identity(1,1),
+	docdate date,
+	docno int,
+	descipttion nvarchar(max),
+	customercode nvarchar(30)
 )
-INSERT INTO #B30ACCDOC
-SELECT 
-'2010-01-01',001,'BAN HANG 01','AA'
-UNION ALL
-SELECT 
-'2010-01-02',002,'BAN HANG 02','AAB'
-UNION ALL
-SELECT 
-'2010-03-01',003,'BAN HANG 03','AC'
-UNION ALL 
-SELECT
-'2010-03-02',004,'BAN HANG 04','AD'
+insert into #b30accdoc
+	select
+		'2010-01-01', 001, 'ban hang 01', 'aa'
+union all
+	select
+		'2010-01-02', 002, 'ban hang 02', 'aab'
+union all
+	select
+		'2010-03-01', 003, 'ban hang 03', 'ac'
+union all
+	select
+		'2010-03-02', 004, 'ban hang 04', 'ad'
 
-SELECT * FROM #B30ACCDOC
+select *
+from #b30accdoc
 
-IF OBJECT_ID('Tempdb..#B30ACCDOCSALES') IS NOT NULL DROP TABLE #B30ACCDOCSALES
-CREATE TABLE #B30ACCDOCSALES(
-	ID INT IDENTITY(1,1),
-	ITEMCODE NVARCHAR(30),
-	QUANTITY NUMERIC,
-	AMOUNT NUMERIC
-)
-
-INSERT INTO #B30ACCDOCSALES
-SELECT 
-'HD',10,10000000
-UNION ALL
- SELECT
- 'HD',5,5000000
- UNION ALL
- SELECT 
-'HD',8,20000000
-UNION ALL
- SELECT 
- 'HD',5,15000000
-
- SELECT * FROM #B30ACCDOCSALES
-
-
-
-IF OBJECT_ID('Tempdb..#B20CUSTOMER') IS NOT NULL DROP TABLE #B20CUSTOMER
-CREATE TABLE #B20CUSTOMER(
-	CODE NVARCHAR(30),
-	NAME NVARCHAR(30)
+if object_id('tempdb..#b30accdocsales') is not null drop table #b30accdocsales
+create table #b30accdocsales
+(
+	id int identity(1,1),
+	itemcode nvarchar(30),
+	quantity numeric,
+	amount numeric
 )
 
-IF OBJECT_ID('Tempdb..#B20ITEM') IS NOT NULL DROP TABLE #B20ITEM
-CREATE TABLE #B20ITEM(
-	CODE NVARCHAR(30),
-	NAME NVARCHAR(30)
+insert into #b30accdocsales
+	select
+		'hd', 10, 10000000
+union all
+	select
+		'hd', 5, 5000000
+union all
+	select
+		'hd', 8, 20000000
+union all
+	select
+		'hd', 5, 15000000
+
+select *
+from #b30accdocsales
+
+
+
+if object_id('tempdb..#b20customer') is not null drop table #b20customer
+create table #b20customer
+(
+	code nvarchar(30),
+	name nvarchar(30)
 )
 
-IF OBJECT_ID('Tempdb..#result') IS NOT NULL DROP TABLE #RESULT 
-CREATE TABLE #RESULT(
-_NO INT NULL,
-_CODE NVARCHAR(30),
-_DOCDATE DATE,
-_DOCNO INT,
-_DESCRIPTION NVARCHAR(MAX),
-_QUANTITY NUMERIC,
-_AMOUNT NUMERIC,
-_DISCOUNT NUMERIC
+if object_id('tempdb..#b20item') is not null drop table #b20item
+create table #b20item
+(
+	code nvarchar(30),
+	name nvarchar(30)
 )
 
-;WITH CMT AS(
-	SELECT #B30ACCDOC.ID,ITEMCODE,DOCDATE,DOCNO,DESCIPTTION,QUANTITY,AMOUNT
-	FROM #B30ACCDOC
-	JOIN #B30ACCDOCSALES
-	ON #B30ACCDOC.ID=#B30ACCDOCSALES.ID
+if object_id('tempdb..#result') is not null drop table #result
+create table #result
+(
+	_no int null,
+	_code nvarchar(30),
+	_docdate date,
+	_docno int,
+	_description nvarchar(max),
+	_quantity numeric,
+	_amount numeric,
+	_discount numeric
+)
+
+;with
+	cmt
+	as
+	
+	(
+		select #b30accdoc.id, itemcode, docdate, docno, descipttion, quantity, amount
+		from #b30accdoc
+			join #b30accdocsales
+			on #b30accdoc.id=#b30accdocsales.id
 	)
-	--INSERT INTO #RESULT
-	INSERT INTO #RESULT(_CODE,_DOCDATE,_DOCNO,_DESCRIPTION,_QUANTITY,_AMOUNT)
-	SELECT ITEMCODE,DOCDATE,DOCNO,DESCIPTTION,QUANTITY,AMOUNT FROM CMT
+--insert into #result
+insert into #result
+	(_code,_docdate,_docno,_description,_quantity,_amount)
+select itemcode, docdate, docno, descipttion, quantity, amount
+from cmt
 
 
 
 
-		UPDATE #RESULT SET _DISCOUNT=ROUND(_AMOUNT*3/100,2) WHERE _AMOUNT<10000000
-	
-		UPDATE #RESULT SET _DISCOUNT=ROUND(_AMOUNT*5/100,2) WHERE _AMOUNT >= 10000000 AND _AMOUNT< 20000000
-	
-		UPDATE #RESULT SET _DISCOUNT=ROUND(_AMOUNT*7/100,2) WHERE _AMOUNT>=20000000
-	
-		SELECT * FROM #RESULT
+update #result set _discount=round(_amount*3/100,2) where _amount<10000000
 
-	--DECLARE @DEL INT =1
-	--WHILE(SELECT TOP 1 1 FROM #RESULT) =1
-	--BEGIN
+update #result set _discount=round(_amount*5/100,2) where _amount >= 10000000 and _amount< 20000000
+
+update #result set _discount=round(_amount*7/100,2) where _amount>=20000000
+
+select *
+from #result
+
+--declare @del int =1
+--while(select top 1 1 from #result) =1
+--begin
+
+
+--delete #result
+--where _docno=@del
+--end
+;with
+	cmt
+	as
 	
-	
-	--DELETE #RESULT
-	--WHERE _DOCNO=@DEL
-	--END
-	;WITH CMT AS(
-	SELECT TOP 2 *  FROM #RESULT
+	(
+		select top 2
+			*
+		from #result
 	)
-	INSERT INTO CMT 
-	(_QUANTITY
-	,_AMOUNT,
-	_DISCOUNT)
-	SELECT 
-	(SELECT SUM(_QUANTITY) FROM CMT),
-	(SELECT SUM(_AMOUNT) FROM CMT),
-	(SELECT SUM(_DISCOUNT) FROM CMT)
+insert into cmt
+	(_quantity
+	,_amount,
+	_discount)
+select
+	(select sum(_quantity)
+	from cmt),
+	(select sum(_amount)
+	from cmt),
+	(select sum(_discount)
+	from cmt)
 	

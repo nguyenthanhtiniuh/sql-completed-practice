@@ -1,17 +1,16 @@
---5m. Tim mat hang ban co doanh thu nhieu nhat trong nam
-use b30 
-go
+--5m. Tim mat hang ban co doanh thu(Amount) nhieu nhat trong nam
+USE B30
+GO
+DECLARE @_NamNhapVao INT = 2014
+DECLARE @_MatHangDoanhThuBanNhieuNhat int =
+(select MAX(Amount)
+from B30AccDocSales
+WHERE YEAR(DocDate)=@_NamNhapVao)
 
-DECLARE @YEAR_INPUT INT =2014;
+SELECT @_MatHangDoanhThuBanNhieuNhat as MatHangCoSoLuongBanNhieuNhat
 
-(SELECT MAX(Quantity) AS MAXQUAN
+-- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
+SELECT *
 FROM B30AccDocSales
-WHERE YEAR(DocDate)=@YEAR_INPUT)
-
-SELECT B30AccDocSales.ItemCode, ItemName,Quantity,DocDate
-FROM B30AccDocSales
-JOIN B20Item
-ON B30AccDocSales.ItemCode=B20Item.ItemCode
-WHERE YEAR(DocDate)=@YEAR_INPUT AND (Quantity = (SELECT MAX(Quantity) AS MAXQUAN
-FROM B30AccDocSales
-WHERE YEAR(DocDate)=@YEAR_INPUT))
+WHERE YEAR(DocDate)  = @_NamNhapVao AND
+    Amount = @_MatHangDoanhThuBanNhieuNhat

@@ -1,10 +1,12 @@
 -- 4.Liệt kê ra 3 mặt hàng bán chạy nhất trong tháng 9/2010. ( nhiều người mua nhất; Ma_Vt, Ten_Vt, Sl_Ban, Tong_Tien).
 
-
 -- SELECT *
 -- INTO #tblHoadonthang9
 
-DROP TABLE #tblTopHoaDonThang9nam2010
+USE KinhDoanh
+GO
+
+DROP TABLE if EXISTS #tblTopHoaDonThang9nam2010
 
 select *
 into #tblTopHoaDonThang9nam2010

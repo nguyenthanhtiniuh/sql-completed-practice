@@ -5,5 +5,7 @@
 --WHERE table_name = 'HoaDon'
 --GO
 --SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE()))
+use KinhDoanh
+go
 
 SELECT *,FORMAT(ngay,'dd-MM-yyyy') FROM HoaDon

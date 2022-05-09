@@ -5,7 +5,7 @@
 -- update HoaDon
 -- set Ngay = '2010-09-01'
 -- WHERE Manhanvien like 'nv03'
-
+--DONE
 select [HoaDon].Sohd,
     [Ngay],
     [Makhachhang],

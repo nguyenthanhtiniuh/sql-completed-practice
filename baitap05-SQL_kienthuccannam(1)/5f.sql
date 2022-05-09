@@ -2,9 +2,11 @@
 USE B30
 GO
 --DONE--5F
-SELECT B30AccDocSales.CustomerCode,CustomerName,Quantity,DocDate
+DROP TABLE if EXISTS #tblKhachMuaHangThang7
+SELECT B30AccDocSales.CustomerCode,Quantity,DocDate INTO #tblKhachMuaHangThang7
 FROM B30AccDocSales
-JOIN B20Customer
-ON B30AccDocSales.CustomerCode=B20Customer.CustomerCode
+-- JOIN B20Customer
+-- ON B30AccDocSales.CustomerCode=B20Customer.CustomerCode
 WHERE (DocDate BETWEEN '20140701' AND '20140731') AND Quantity>0
-GO
+
+select * from #tblKhachMuaHangThang7
