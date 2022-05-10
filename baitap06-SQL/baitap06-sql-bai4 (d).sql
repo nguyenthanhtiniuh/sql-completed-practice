@@ -58,7 +58,3 @@ WHERE ROW_NUM > 1
 
 SELECT COUNT(CustomerCode)
 FROM B20Customer
-
-
-SELECT *
-FROM B20Customer

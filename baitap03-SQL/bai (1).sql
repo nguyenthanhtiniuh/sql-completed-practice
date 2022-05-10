@@ -1,7 +1,7 @@
 -- 1.Liệt kê ra các mặt hàng thuộc nhóm Hàng Hoá
 USE KinhDoanh
-ALTER table MatHang
-ADD DanhMuc varchar(50)
+-- ALTER table MatHang
+-- ADD DanhMuc varchar(50)
 
 -- UPDATE MatHang
 -- set DanhMuc = 'Hang Hoa'

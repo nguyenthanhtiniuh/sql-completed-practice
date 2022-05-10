@@ -1,53 +1,24 @@
--Sử dụng các hàm xử lý chuỗi: LEFT, RIGHT, RTRIM, SUBTRING, REPLACE, REPLICATE, STUFF, CHARINDEX, PATINDEX
--Sử dụng các hàm xử lý thời gian: DATE, DATEDIFF, DATAPART, YEAR, MONTH, DAY, FORMATDATETIME
--Sử dụng các hàm xử lý số: /, %, ROUND, ISNUMERIC
--Chuyển đổi số liệu: CAST, CONVERT, STR
--Sử dụng các cách khác nhau (nếu có) cho từng câu bài tập
-1.Tìm hiểu các kiểu dữ liệu trong Sql Server
-2.Cho tên nhân viên đầy đủ. Tách lấy 2 phần: Họ tên đệm, và Tên; Tách lấy Họ và Tên đệm.
---SELECT Contactname 
---from Customers
+-- -Sử dụng các hàm xử lý chuỗi: LEFT, RIGHT, RTRIM, SUBTRING, REPLACE, REPLICATE, STUFF, CHARINDEX, PATINDEX
+-- -Sử dụng các hàm xử lý thời gian: DATE, DATEDIFF, DATAPART, YEAR, MONTH, DAY, FORMATDATETIME
+-- -Sử dụng các hàm xử lý số: /, %, ROUND, ISNUMERIC
+-- -Chuyển đổi số liệu: CAST, CONVERT, STR
+-- -Sử dụng các cách khác nhau (nếu có) cho từng câu bài tập
+-- 1.Tìm hiểu các kiểu dữ liệu trong Sql Server
+use TBL
 
---select DATALENGTH(SELECT Contactname 
---from Customers) as lengthcontactname
+DECLARE @_StringInput nvarchar(100) = 'Nguyen Van Thanh Tin'
+DECLARE @_Vitridaucachdautien int = CHARINDEX(' ',@_StringInput)
 
---SELECT REVERSE(CompanyName)
---FROM Customers;
+select left(@_StringInput,@_Vitridaucachdautien) as Ho
 
---ADD column
---ALTER table Customers
---ADD  Ho VARCHAR(10), TEN VARCHAR(10)
---GO
-use Northwind
-go 
---drop column
---alter table Customers 
---drop Ho, TEN
+DECLARE @_VitridaucachdautienkhidaoChuoi int = CHARINDEX(' ',reverse(@_StringInput))
 
---alter table Customers
---add CustomerFirstName nvarchar(40)
+select REVERSE(left((select REVERSE(@_StringInput) as reversename),@_VitridaucachdautienkhidaoChuoi)) as Ten
 
---UPDATE Customers
+DECLARE @_ChieudaiStringInput int = Len(@_StringInput)
 
---Ten = SUBSTRING(ContactName,' ',-1)
+DECLARE @_ChieudaiHo int = Len(left(@_StringInput,@_Vitridaucachdautien))
 
---select 
-----trim(substring(Customers.ContactName,1,LEN(Customers.ContactName)-
+DECLARE @_ChieuDaiTen int = Len(REVERSE(left((select REVERSE(@_StringInput) as reversename),@_VitridaucachdautienkhidaoChuoi)))
 
-DECLARE @nstr nvarchar(100) = 'Nguyen Van Thanh Tin'
-DECLARE @positionfirstspace int = CHARINDEX(' ',@nstr)
-
-select left(@nstr,@positionfirstspace) as firstname
-
-DECLARE @positionreversespace int = CHARINDEX(' ',reverse(@nstr))
-
-select REVERSE(left((select REVERSE(@nstr) as reversename),@positionreversespace)) as lastName
-
-DECLARE @lenname int = Len(@nstr) 
-
-DECLARE @lenfirstname int = Len(left(@nstr,@positionfirstspace))
-
-DECLARE @lenlastname int = Len(REVERSE(left((select REVERSE(@nstr) as reversename),@positionreversespace)))
-
-select TRim(SUBSTRING(@nstr,@positionfirstspace,(@lenname-@lenlastname-@lenfirstname))) as middleName
-
+select TRIM(SUBSTRING(@_StringInput,@_Vitridaucachdautien,(@_ChieudaiStringInput-@_ChieuDaiTen-@_ChieudaiHo))) as TenDem

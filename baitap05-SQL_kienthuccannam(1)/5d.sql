@@ -17,20 +17,31 @@ FROM B30AccDocSales
 WHERE YEAR(DocDate)= 2014
 
 -- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
-SELECT *
+--Tim nhan Vien Ban Hang Nhieu Nhat Theo Thang
+declare @_ThangInput int =6
+
+SELECT MONTH(DocDate), Amount
 FROM #tblB30AccDocSalesNam2014
 WHERE Amount = (
 SELECT MAX(Amount)
-from #tblB30AccDocSalesNam2014)
+from #tblB30AccDocSalesNam2014
+WHERE MONTH(DocDate) = @_ThangInput
+)
+GO
 
+declare @_ThangInput int =12
 SELECT [STT],
     [#tblB30AccDocSalesNam2014].Employeecode,
     [Quantity],
     [Amount],
     [DocDate]
 FROM [#tblB30AccDocSalesNam2014]
-JOIN B20Employee
-ON #tblB30AccDocSalesNam2014.Employeecode=B20Employee.EmployeeCode
+-- JOIN B20Employee
+-- ON #tblB30AccDocSalesNam2014.Employeecode=B20Employee.EmployeeCode
 WHERE #tblB30AccDocSalesNam2014.Amount=(
-SELECT MAX(Amount)
-from #tblB30AccDocSalesNam2014)
+SELECT MAX
+(Amount)
+from #tblB30AccDocSalesNam2014
+WHERE MONTH
+(DocDate) = @_ThangInput
+)

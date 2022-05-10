@@ -1,25 +1,43 @@
-8.Tạo bảng tất cả thứ của tất cả các ngày trong một tháng từ một ngày cho trước.
+-- 8.Tạo bảng tất cả thứ của tất cả các ngày trong một tháng từ một ngày cho trước.
+use TBL
+DROP TABLE if EXISTS #Dates
+CREATE TABLE #Dates
+(
+	Dates Datetime
+)
 
-	DECLARE @DAYINPUTED DATETIME = GETDATE()
-	--SELECT @DAYINPUTED AS CURRENTDAY
-	DECLARE @COUNT INT= DAY(@DAYINPUTED)
-	--SELECT @COUNT
-	DECLARE @_COUNTPLUS INT = DAY(@DAYINPUTED)+1
+DECLARE @Start DATETIME
+DECLARE @End DATETIME
+DECLARE @_NgayHienTai DATETIME = GETDATE()
 
-	WHILE ( 1<@COUNT+1)
+SET @Start = DATEADD
+(dd,-
+(DAY
+(@_NgayHienTai)-1),@_NgayHienTai)
+-- IN MM/DD/YYYY format
+SET @End = DATEADD
+(dd,-
+(DAY
+(DATEADD
+(mm,1,@_NgayHienTai))),DATEADD
+(mm,1,@_NgayHienTai))
+-- IN MM/DD/YYYY format
+
+DECLARE @Counter INT, @TotalCount INT
+SET @Counter = 0
+SET @TotalCount = DateDiff(DD,@Start,@End)
+
+
+WHILE (@Counter <=@TotalCount)
 BEGIN
-DECLARE @DATEBEFOREINPUT DATE = DATEADD(DD,-(@COUNT-1),@DAYINPUTED)
-    PRINT  DATENAME(WEEKDAY,@DATEBEFOREINPUT) +' ' +DATENAME(DAY,@DATEBEFOREINPUT) +' '+ DATENAME(MONTH,@DATEBEFOREINPUT)
-	SET @COUNT=@COUNT-1
+	DECLARE @DateValue DATETIME
+	SET  @DateValue= DATEADD(DD,@Counter,@Start)
+
+	INSERT INTO #Dates
+		(Dates)
+	VALUES(@DateValue)
+
+	SET @Counter = @Counter + 1
 END
 
-	WHILE ( @_COUNTPLUS<=31)
-BEGIN
-DECLARE @DATEAFTERINPUT DATE = DATEADD(DD,@_COUNTPLUS-20,@DAYINPUTED)
-    PRINT  DATENAME(WEEKDAY,@DATEAFTERINPUT) +' '+ DATENAME(DAY,@DATEAFTERINPUT) +' '+  DATENAME(MONTH,@DATEAFTERINPUT) 
-    --PRINT @_COUNTPLUS
-	SET @_COUNTPLUS=@_COUNTPLUS+1
-END
-
-
-
+select * from #Dates

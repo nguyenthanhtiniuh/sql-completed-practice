@@ -57,10 +57,9 @@ FROM B30AccDocSales
 WHERE YEAR(DocDate)=2014
 order BY DocDate
 
-
-SELECT *
-FROM #tblDoanhSoBanHangTungMatHang2014
-ORDER by DocDate
+-- SELECT *
+-- FROM #tblDoanhSoBanHangTungMatHang2014
+-- ORDER by DocDate
 
 SELECT ItemCode,
 	MONTH(DocDate) as Thang,

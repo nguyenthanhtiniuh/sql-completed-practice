@@ -76,13 +76,13 @@ CREATE TABLE #tblResult
     Nameresult NVARCHAR(50)
 )
 
-SELECT distinct FORMAT (#tblResourceB.DateRB, 'dd-MM-yyyy') as date,
+SELECT FORMAT (#tblResourceB.DateRB, 'dd-MM-yyyy') as date,
     [DateRB],
     [CodeRB], NameRA
 FROM #tblResourceB
     right JOIN #tblResourceA
     ON #tblResourceB.CodeRB=#tblResourceA.CodeRA
-    WHERE #tblResourceA.DateRA=#tblResourceB.DateRB
+    -- WHERE #tblResourceA.DateRA=#tblResourceB.DateRB
 ORDER by [date]
 
 -- ;WITH

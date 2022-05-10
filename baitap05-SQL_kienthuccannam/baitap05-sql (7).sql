@@ -1,5 +1,5 @@
-7.Nhân viên vào làm 13/01/1983, nghỉ việc đến thời hiện tại. 
-Hãy tính thâm niên nhân viên bao nhiêu ngày, bao nhiêu tháng, bao nhiêu năm.
+-- 7.Nhân viên vào làm 13/01/1983, nghỉ việc đến thời hiện tại. 
+-- Hãy tính thâm niên nhân viên bao nhiêu ngày, bao nhiêu tháng, bao nhiêu năm.
 
 DECLARE @CURRENTDAY date = GETDATE()
 

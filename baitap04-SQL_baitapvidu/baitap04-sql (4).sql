@@ -1,27 +1,57 @@
 --4-baitap4
---TAO BANG TAM DANH MUC VAT TU #B20ITEM(CODE,NAME,GROUPCODE), VA TON KHO DAU KY #B30OPENSTOCK(ITEMCODE,QUANTITY,WAREHOUSECODE)
-USE TBL
---BANG TAM DANH MUC VAT TU
-IF OBJECT_ID('Tempdb..#B20ITEM') IS NOT NULL DROP TABLE #B20ITEM
-CREATE TABLE #B20ITEM(
-CODE NVARCHAR(50),
-NAME NVARCHAR(50),
-GROUPCODE NVARCHAR(50))
-
---BANG TON KHO DAU KY
-IF OBJECT_ID('Tempdb..#B30OPENSTOCK') IS NOT NULL DROP TABLE #B30OPENSTOCK
-CREATE TABLE #B30OPENSTOCK(
-ITEMCODE NVARCHAR(50),
-QUANTITY INT,
-WAREHOUSECODE NVARCHAR(50))
-
---TABLE RESULT
-IF OBJECT_ID('Tempdb..#RESULT') IS NOT NULL DROP TABLE #RESULT
-CREATE TABLE #RESULT(
-GROUPCODE NVARCHAR(50),
-ITEMCODE NVARCHAR(50),
-ITEMNAME NVARCHAR(50),
-STOCK1 INT,
-STOCK2 INT,
-STOCK3 INT
+--tao bang tam danh muc vat tu #B20Item(Code,Name,GroupCode), va ton kho dau ky #B30OpenStock(ItemCode,Quantity,WarehouseCode)
+use tbl
+--bang tam danh muc vat tu
+if object_id('tempdb..#B20Item') is not null drop table #B20Item
+create table #B20Item
+(
+    Code nvarchar(50),
+    Name nvarchar(50),
+    GroupCode nvarchar(50)
 )
+
+--bang ton kho dau ky
+if object_id('tempdb..#B30OpenStock') is not null drop table #B30OpenStock
+create table #B30OpenStock
+(
+    ItemCode nvarchar(50),
+    Quantity int,
+    WarehouseCode nvarchar(50)
+)
+
+--table result
+if object_id('tempdb..#result') is not null drop table #result
+create table #result
+(
+    GroupCode nvarchar(50),
+    ItemCode nvarchar(50),
+    ItemName nvarchar(50),
+    Stock1 int,
+    Stock2 int,
+    Stock3 int
+)
+
+INSERT into #result
+    SELECT
+        'VT', 'Vt1', 'Vat tu 1', 5, 0, 0
+union all
+    select
+        'VT', 'Vt2', 'Vat tu 2', 0, 9, 1
+UNION ALL
+    select
+        'VT', 'Vt3', 'Vat tu 3', 3, 2, 7
+
+INSERT into #B20Item
+SELECT ItemCode, ItemName, GroupCode
+from #result
+select *
+from #B20Item
+
+INSERT into #result
+    (ItemName,Stock1,Stock2,Stock3)
+select 'tong cong', SUM(Stock1), SUM(Stock2), SUM(Stock3)
+from #result
+
+
+SELECT *
+FROM #result

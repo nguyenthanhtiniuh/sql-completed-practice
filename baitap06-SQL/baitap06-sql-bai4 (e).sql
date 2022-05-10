@@ -6,10 +6,16 @@ USE B30
 GO
 --SELECT *
 --FROM B30AccDocSales
-select * from B20Prices
-INSERT INTO B20Prices(EffectiveDate)
-VALUES ('20140101')
+select *
+from B20Prices
+INSERT INTO B20Prices
+    (EffectiveDate)
+VALUES
+    ('20140101')
 GO
+-- DELETE FROM B20Prices WHERE Amount is  NULL;
+
+
 --INSERT INTO B20Prices(Amount)
 --VALUES (floor(rand()*(2000-500))*1000+500000)
 --WHERE EffectiveDate = '20140101'
@@ -18,7 +24,8 @@ UPDATE B20Prices
 SET Amount = (floor(rand()*(2000-500))*1000+500000)
 WHERE EffectiveDate = '20140101';
 GO
-INSERT INTO B20Prices(Amount,EffectiveDate )
-VALUES((floor(rand()*(2000-500))*1000+500000),'20140101');
+INSERT INTO B20Prices
+    (Amount,EffectiveDate )
+VALUES((floor(rand()*(2000-500))*1000+500000), '20140101');
 
 --SELECT (floor(rand()*(2000-500))*1000+500000)

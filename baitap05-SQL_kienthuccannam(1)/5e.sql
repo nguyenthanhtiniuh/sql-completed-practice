@@ -1,13 +1,20 @@
 --5E.TIM 3 NHAN VIEN BAN HANG CO TONG DOANH SO BAN NHIEU NHAT TRONG NAM 2014 --SAI
 USE B30
-SELECT *
+drop TABLE if EXISTS #tblTop3NhanVienTongDoanhSoBanHang2014
+SELECT top 3
+    -- [ItemCode],
+    -- [CustomerCode],
+    [Employeecode],
+    -- [DeptCode],
+    -- [Quantity],
+    -- [Amount],
+    -- [DocDate],
+    SUM(Amount)  as SumAmount
+into #tblTop3NhanVienTongDoanhSoBanHang2014
 FROM B30AccDocSales
 WHERE YEAR(DocDate)= 2014
+GROUP by Employeecode
+ORDER BY SumAmount DESC
 
-SELECT TOP 3
-    *
-FROM B30AccDocSales
-    JOIN B20Employee
-    ON B30AccDocSales.Employeecode=B20Employee.EmployeeCode
-WHERE YEAR(DocDate) = 2014
-ORDER BY Amount DESC
+select *
+from #tblTop3NhanVienTongDoanhSoBanHang2014

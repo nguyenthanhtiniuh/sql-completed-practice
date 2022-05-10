@@ -1,71 +1,36 @@
-3.Cho chuỗi có dạng phần cuối là một ký tự bất kỳ, 
-phần đầu là một số tự nhiên dưới 100000. 
-Hãy tạo chuỗi có dạng phần đầu là một ký tự nói trên, 
-phần cuối là một số tự nhiên nói trên được đắp thêm 
-các ký tự 0 ở phía trước nó, và phần giữa là ký tự “-”. 
-Nếu cho chuỗi “12A” thì chuỗi cần tìm “A-00012”.
+-- 3.Cho chuỗi có dạng phần cuối là một ký tự bất kỳ, 
+-- phần đầu là một số tự nhiên dưới 100000. 
+-- Hãy tạo chuỗi có dạng phần đầu là một ký tự nói trên, 
+-- phần cuối là một số tự nhiên nói trên được đắp thêm 
+-- các ký tự 0 ở phía trước nó, và phần giữa là ký tự “-”. 
+-- Nếu cho chuỗi “12A” thì chuỗi cần tìm “A-00012”.
 
 begin
-declare @str nvarchar(7) = '99999ABC';
-DECLARE @RESULT nvarchar(8);
---select REVERSE(@str) as string
-declare @lastLetterOfStr nvarchar= LEFT(REVERSE(@str),1)
---select @lastLetterOfStr as lastletter
-declare @positionOfLetter int = CHARINDEX(@lastLetterOfStr,@str)
---select @positionOfLetter as positionofletter
+    declare @_StringInput nvarchar(7) = '999999A';
+    select @_StringInput
 
-declare @numberInStr int = left(@str,@positionOfLetter-1)
---select @numberInStr as number
+    DECLARE @_Result nvarchar(8);
+    --select REVERSE(@_StringInput) as string
+    declare @_KytucuoiStringInput nvarchar= LEFT(REVERSE(@_StringInput),1)
+    select @_KytucuoiStringInput as KytucuoiStringInput
 
-SET @RESULT = @lastLetterOfStr+'-'+replace(str(@numberINSTR,7),' ',0)
+    declare @_VitriCuaKyTuCuoi int = CHARINDEX(@_KytucuoiStringInput,@_StringInput)
+    select @_VitriCuaKyTuCuoi as VitriCuaKyTuCuoi
 
-if @numberInStr<100000
+    declare @_SotachduoctrongStringInput int = (SELECT( left(@_StringInput,@_VitriCuaKyTuCuoi-1)))
+    select replace(str(@_SotachduoctrongStringInput,5),' ',0)
+
+    declare @_SotachduocThanhChuoi NVARCHAR(6) = replace(str(@_SotachduoctrongStringInput,5),' ',0)
+
+    SET @_Result = @_KytucuoiStringInput+'-'+@_SotachduocThanhChuoi
+
+    if @_SotachduoctrongStringInput<100000
 begin
-print @RESULT
-end
+        print 'So Tach Duoc Trong Chuoi = ' + replace(str(@_SotachduoctrongStringInput,5),' ',0)
+        print 'Ket qua Sau Khi Tach = '+ @_Result
+    end
 else
 begin
-print 'number large than 100000';
+        print 'So lon hon 100000, khong tach chuoi duoc, moi nhap lai String Input';
+    end
 end
-end
---create function mergerstring(@input varchar(7))
---returns varchar(7)
---as
---begin
---declare @lastLetterOfStr nvarchar= LEFT(REVERSE(@input),1)
---declare @positionOfLetter int = CHARINDEX(@lastLetterOfStr,@input)
---declare @numberInStr int = left(@input,@positionOfLetter-1)
---DECLARE @RESULT nvarchar(7) = @lastLetterOfStr+'-'+cast(@numberINSTR as nvarchar(7))
---return @RESULT
---END
-
---execute [dbo].[mergerstring]
-
-
---select left(@str,@positionOfLetter-1) as number
---declare @lastLetterStr char(7) = left(reverse(@str),1) 
-
---select @lastLetterStr as letter
-
---declare @lengthOfLetter int = len(@lastLetterStr)
-
---declare @numberINSTR int = left(@str,@lengthOfLetter) 
-
---select (@numberINSTR) as numberInStr
-
---select CAST(@numberINSTR as char(7)) as numbertochar
-
---DECLARE @RESULT char(7) = @lastLetterStr+'-'+cast(@numberINSTR as nvarchar(7))
-
---select @RESULT
-
---select reverse(@str) as daochuoi
-
-
-
---case 
---when @numberINSTR<100000 then 
-
---when then
-
---end

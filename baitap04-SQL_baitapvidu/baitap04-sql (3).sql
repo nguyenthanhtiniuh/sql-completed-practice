@@ -19,6 +19,10 @@ INSERT into #b20customer
 SELECT
 	'ABC', 'Cong Ty ABC'
 
+INSERT into #b20customer
+SELECT
+	'BCD', 'Cong Ty BCD'
+
 if object_id('tempdb..#b30accdoc') is not null drop table #b30accdoc
 create table #b30accdoc
 (
@@ -34,11 +38,6 @@ insert into #b30accdoc
 union all
 	select
 		'2010-01-02', 002, 'ban hang 02', 'ABC'
-
-INSERT into #b20customer
-SELECT
-	'BCD', 'Cong Ty BCD'
-
 
 insert into #b30accdoc
 	select
@@ -122,6 +121,11 @@ SELECT
 	customercode
 from cmt
 
+INSERT INTO #result
+	([Description],Quantity,Amount,Discount)
+SELECT 'Tong Cong', SUM(Quantity), SUM(Amount), SUM(Discount)
+FROM #result
+
 -- Update rows in table '[#result]' in schema '[dbo]'
 UPDATE #result
 SET
@@ -141,7 +145,54 @@ SET
 WHERE Amount>=20000000
 GO
 
--- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
-
+INSERT into #result
+	(Code,[Description])
 SELECT *
+from #b20customer
+
+UPDATE #result
+set Quantity = (SELECT SUM(Quantity)
+from #result
+WHERE CustomerCode 
+= 'ABC'
+GROUP BY CustomerCode),
+Amount=(SELECT SUM(Amount)
+from #result
+WHERE CustomerCode 
+= 'ABC'
+GROUP BY CustomerCode),
+Discount=(SELECT SUM(Discount)
+from #result
+WHERE CustomerCode 
+= 'ABC'
+GROUP BY CustomerCode)
+WHERE Code like 'ABC'
+
+UPDATE #result
+set Quantity = (SELECT SUM(Quantity)
+from #result
+WHERE CustomerCode 
+= 'BCD'
+GROUP BY CustomerCode),
+Amount=(SELECT SUM(Amount)
+from #result
+WHERE CustomerCode 
+= 'BCD'
+GROUP BY CustomerCode),
+Discount=(SELECT SUM(Discount)
+from #result
+WHERE CustomerCode 
+= 'BCD'
+GROUP BY CustomerCode)
+WHERE Code like 'BCD'
+
+SELECT [No],
+	[Code],
+	[Docdate],
+	[DocNo],
+	[Description],
+	[Quantity],
+	[Amount],
+	[Discount]
 FROM #result
+

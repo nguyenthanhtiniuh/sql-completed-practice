@@ -1,10 +1,10 @@
-4.Cho một chuỗi bất kỳ có dạng các tài khoản kế toán nối nhau bằng dấy phẩy như sau 
-“111,112,113,131”. Hãy tạo chuỗi có dạng như sau 
-“DebitAccount LIKE ‘111%’ OR DebitAccount LIKE ‘112%’ 
-OR DebitAccount LIKE ‘113%’ OR DebitAccount LIKE ‘131%’”
+-- 4.Cho một chuỗi bất kỳ có dạng các tài khoản kế toán nối nhau bằng dấy phẩy như sau 
+-- “111,112,113,131”. Hãy tạo chuỗi có dạng như sau 
+-- “DebitAccount LIKE ‘111%’ OR DebitAccount LIKE ‘112%’ 
+-- OR DebitAccount LIKE ‘113%’ OR DebitAccount LIKE ‘131%’”
 
-go 
-use TEST
+go
+use TBL
 go
 DECLARE @STR NVARCHAR(100) = '111,112,113,131,115'
 SELECT CONCAT(',',@STR)
@@ -12,7 +12,8 @@ SELECT CONCAT(',',@STR)
 DECLARE @RESULT NVARCHAR(500) = REPLACE(CONCAT(',',@STR,'%'),',','%DebitAccount LIKE ')
 --SELECT @RESULT
 
-SELECT Value FROM STRING_SPLIT(@RESULT, '%') 
+SELECT Value
+FROM STRING_SPLIT(@RESULT, '%') 
 
 
 

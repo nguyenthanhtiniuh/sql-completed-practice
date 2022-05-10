@@ -15,8 +15,6 @@ WHERE (DocDate BETWEEN '20140701' AND '20140731'
     AND Employeecode IN (SELECT Employeecode
     FROM TBL))
 
-
-
 --Cach 2
 drop TABLE if EXISTS #tblTatCaKhachKhongMuaHangTrongThanh07
 SELECT *

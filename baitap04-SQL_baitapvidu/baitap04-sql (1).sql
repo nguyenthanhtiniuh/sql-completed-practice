@@ -34,3 +34,14 @@ from #B20Warehouse
 SELECT CHARINDEX
 ( 'A', 'ABC')
 
+drop TABLE if EXISTS #tblResult
+SELECT *
+into #tblResult
+from #B20Warehouse
+
+
+ALTER TABLE #tblResult
+ADD Description NVARCHAR(100)
+
+SELECT *
+FROM #tblResult

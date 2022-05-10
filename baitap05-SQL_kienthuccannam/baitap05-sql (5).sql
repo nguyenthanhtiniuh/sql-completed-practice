@@ -1,4 +1,5 @@
-5.Tạo ra bảng dữ liệu chứa các mã tài khoản kế toán từ một chuỗi các mã tài khoản kế toán 
+-- 5.Tạo
+-- ra bảng dữ liệu chứa các mã tài khoản kế toán từ một chuỗi các mã tài khoản kế toán
 --cách nhau bằng dấu phẩy “,”.
 
 USE B30
@@ -22,4 +23,5 @@ DECLARE @STRING_INPUT VARCHAR(MAX) ='111,112,131'
 DECLARE @RESULT VARCHAR(MAX) = REPLACE( CONCAT(',',@STRING_INPUT,'%'),',','%TK LIKE')
 
 SET @RESULT = REPLACE( SUBSTRING(@RESULT,2,LEN(@RESULT)),'%','%,')
-SELECT VALUE FROM string_split(@RESULT,',')
+SELECT VALUE
+FROM string_split(@RESULT,',')

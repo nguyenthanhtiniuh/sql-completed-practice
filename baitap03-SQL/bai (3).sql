@@ -3,12 +3,15 @@
 -- FROM NhanVien
 -- WHERE TenNhanVien = 'Nguyen Van a' or Manhanvien = 'nv1'
 
--- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
-SELECT NhanVien.Manhanvien, Sohd, [Ngay],
+select *
+from NhanVien
+
+SELECT [Sohd],
+    [Ngay],
     [Makhachhang],
+    [HoaDon].[Manhanvien], TenNhanVien,
     [TriGia]
-FROM NhanVien
-    JOIN HoaDon
-    ON NhanVien.Manhanvien = HoaDon.Manhanvien
-WHERE TenNhanVien
-= 'Nguyen Van A'
+from HoaDon
+    JOIN NhanVien
+    ON HoaDon.Manhanvien=NhanVien.Manhanvien
+wHERE year(Ngay) = 2010 and MONTH(Ngay) = 9 AND NhanVien.TenNhanVien='Nguyen Van A'
