@@ -2,13 +2,11 @@
 --SET DATEFORMAT 'DD-MM-YYYY'
 use KinhDoanh
 go
-IF OBJECT_ID('#tblMaMatHangThang9') IS NOT NULL DROP TABLE #tblMaMatHangThang9
+drop TABLE if exists #tblMaMatHangThang9
 Create table #tblMaMatHangThang9
 (
     MaMatHang nvarchar(4)
 )
-SELECT *
-FROM #tblMaMatHangThang9
 
 ;WITH
     tbl
@@ -30,16 +28,19 @@ insert into #tblMaMatHangThang9
 select MaMatHang
 from tbl
 
+SELECT *
+FROM #tblMaMatHangThang9
+
 SELECT #tblMaMatHangThang9.MaMatHang AS MATHANGBANVAOTHANG9, TenMatHang, Gia
 FROM #tblMaMatHangThang9
     JOIN MatHang
     ON #tblMaMatHangThang9.MaMatHang=MatHang.MaMathang
 
---SELECT MaMathang AS MATHANGCONGUOIMUATHANG9
---    FROM #tblMaMatHangThang9
---		INTERSECT
---		SELECT MaMathang
---    FROM MatHang
+    SELECT MaMathang AS _MATHANGCONGUOIMUATHANG9
+    FROM #tblMaMatHangThang9
+INTERSECT
+    SELECT MaMathang
+    FROM MatHang
 
 --MAT HANG KHONG CO NGUOI MUA VAO THANG 9
     SELECT MaMathang AS MATHANGKOCONGUOIMUATHANG9

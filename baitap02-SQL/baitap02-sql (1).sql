@@ -9,10 +9,12 @@ DECLARE @_Result VARCHAR(MAX) = REPLACE( CONCAT(',',@_String,'%'),',','% TK LIKE
 SET @_Result = REPLACE( SUBSTRING(@_Result,2,LEN(@_Result)),'%','%,')
 select(@_Result)
 
+drop TABLE if EXISTS TestString
 CREATE TABLE TestString
 (
     String NVARCHAR(20)
 )
+
 INSERT into TestString
     (String)
 SELECT VALUE

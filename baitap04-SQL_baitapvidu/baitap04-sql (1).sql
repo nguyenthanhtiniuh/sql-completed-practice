@@ -5,11 +5,32 @@
 USE TBL
 GO
 
-CREATE TABLE #B20Warehouse(
-STT INT IDENTITY(1,1) NOT NULL,
-WarehouseCode nvarchar(50)
+drop TABLE if EXISTS #B20Warehouse
+CREATE TABLE #B20Warehouse
+(
+    STT INT IDENTITY(1,1) NOT NULL,
+    WarehouseCode nvarchar(50)
 )
 
-INSERT INTO #B20Warehouse(WarehouseCode)
-VALUES ('A'),('B'),('C'),('D')
-SELECT * FROM #B20Warehouse
+INSERT INTO #B20Warehouse
+    (WarehouseCode)
+VALUES
+    ('A'),
+    ('B'),
+    ('C'),
+    ('ABC')
+SELECT *
+FROM #B20Warehouse
+
+drop TABLE if EXISTS #tblResult
+SELECT *
+into #tblResult
+FROM #B20Warehouse
+
+select top 1
+    WarehouseCode
+from #B20Warehouse
+
+SELECT CHARINDEX
+( 'A', 'ABC')
+

@@ -7,4 +7,4 @@ where Ngay between '2010-09-01 00:00:00.000' and '2010-09-30 00:00:00.000'
 select SUM(TriGia) as tongdoanhsocuaphongkinhdoanh_thang09nam2010
 from HoaDon
 where Ngay between '2010-09-01 00:00:00.000' and '2010-09-30 00:00:00.000'
-group by MONTH(ngay)
+group by MONTH(Ngay)

@@ -43,10 +43,10 @@ CREATE TABLE #tblResult
 (
     Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
     Code nvarchar(50),
-    OpenValue INT,
+    OpenValue INT DEFAULT 1,
     InputValue INT,
     OutputValue INT,
-    CloseValue INT
+    CloseValue INT DEFAULT 2
 )
 
 SET

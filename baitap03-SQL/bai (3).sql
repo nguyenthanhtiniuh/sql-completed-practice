@@ -4,7 +4,9 @@
 -- WHERE TenNhanVien = 'Nguyen Van a' or Manhanvien = 'nv1'
 
 -- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
-SELECT NhanVien.Manhanvien, Sohd
+SELECT NhanVien.Manhanvien, Sohd, [Ngay],
+    [Makhachhang],
+    [TriGia]
 FROM NhanVien
     JOIN HoaDon
     ON NhanVien.Manhanvien = HoaDon.Manhanvien

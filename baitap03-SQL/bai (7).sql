@@ -2,6 +2,8 @@
 -- UPDATE NhanVien 
 -- set BirthDay = '1967-01-01'
 -- where GioiTinh = 'nam'
+use KinhDoanh
+go
 
 UPDATE NhanVien 
 set BirthDay = '1972-01-01'
