@@ -22,17 +22,12 @@ VALUES
 SELECT *
 FROM #B20Warehouse
 
-drop TABLE if EXISTS #tblResult
-SELECT *
-into #tblResult
-FROM #B20Warehouse
+--select top 1
+--    WarehouseCode
+--from #B20Warehouse
 
-select top 1
-    WarehouseCode
-from #B20Warehouse
-
-SELECT CHARINDEX
-( 'A', 'ABC')
+--SELECT CHARINDEX
+--( 'A', 'ABC')
 
 drop TABLE if EXISTS #tblResult
 SELECT *
@@ -45,3 +40,18 @@ ADD Description NVARCHAR(100)
 
 SELECT *
 FROM #tblResult
+
+
+SELECT WarehouseCode
+FROM #B20Warehouse
+WHERE EXISTS
+(SELECT WarehouseCode
+FROM #tblResult
+WHERE #B20Warehouse.WarehouseCode=#tblResult.WarehouseCode);
+
+
+
+SELECT *
+FROM #B20Warehouse
+WHERE WarehouseCode like 'A%%' and WarehouseCode not like 'A';
+--SELECT * FROM table_name WHERE col_name LIKE '%my_value%';
