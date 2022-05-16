@@ -1,3 +1,16 @@
+-- Create a new database called 'TBL'
+-- Connect to the 'master' database to run this snippet
+USE master
+GO
+-- Create the new database if it does not exist already
+IF NOT EXISTS (
+	SELECT [name]
+		FROM sys.databases
+		WHERE [name] = N'TBL'
+)
+CREATE DATABASE TBL
+GO
+
 USE [TBL]
 GO
 /****** Object:  UserDefinedFunction [dbo].[RandNumber]    Script Date: 5/16/2022 4:00:49 PM ******/
