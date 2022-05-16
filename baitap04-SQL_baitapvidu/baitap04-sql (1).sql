@@ -22,36 +22,30 @@ VALUES
 SELECT *
 FROM #B20Warehouse
 
---select top 1
---    WarehouseCode
---from #B20Warehouse
-
---SELECT CHARINDEX
---( 'A', 'ABC')
-
 drop TABLE if EXISTS #tblResult
-SELECT *
-into #tblResult
+CREATE TABLE #tblResult
+(
+    STT INT IDENTITY(1,1) NOT NULL,
+    WarehouseCode nvarchar(50),
+    Decription NVARCHAR(50)
+)
+go
+
+insert into #tblResult
+    (WarehouseCode)
+SELECT WarehouseCode
 from #B20Warehouse
 
-
-ALTER TABLE #tblResult
-ADD Description NVARCHAR(100)
-
-SELECT *
-FROM #tblResult
-
-
-SELECT WarehouseCode
-FROM #B20Warehouse
-WHERE EXISTS
-(SELECT WarehouseCode
-FROM #tblResult
-WHERE #B20Warehouse.WarehouseCode=#tblResult.WarehouseCode);
-
-
-
-SELECT *
-FROM #B20Warehouse
+UPDATE #tblResult
+SET Decription = 'Co ma long tai dong "0001" '
 WHERE WarehouseCode like 'A%%' and WarehouseCode not like 'A';
+
+UPDATE #tblResult
+SET Decription = '
+Ma "A" long trong "ABC"
+'
+WHERE WarehouseCode LIKE 'A'
+
+SELECT *
+FROM #tblResult
 --SELECT * FROM table_name WHERE col_name LIKE '%my_value%';

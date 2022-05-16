@@ -2,3 +2,5 @@
 
 USE B30
 GO
+
+SELECT * FROM B20Prices

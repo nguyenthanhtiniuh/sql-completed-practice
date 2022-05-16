@@ -2,14 +2,14 @@ USE TBL
 GO
 
 -- Table to be used by Over Clause Rows/Range
- 
+
 --CREATE TABLE REVENUE
 --(
 --[DepartmentID] int,
 --[Revenue] int,
 --[Year] int
 --);
- 
+
 --insert into REVENUE
 --values (1,10030,1998),(2,20000,1998),(3,40000,1998),
 -- (1,20000,1999),(2,60000,1999),(3,50000,1999),
@@ -29,13 +29,13 @@ GO
 
 --  SELECT * FROM REVENUE
 
- -- first simple sum and avg aggregates
+-- first simple sum and avg aggregates
 --SELECT sum(Revenue) as TotalRevenue,
 -- avg(Revenue) as AverageRevenue,
 -- count(*) as NumRows
 -- FROM Revenue;
 
- -- ROWS FOLLOWING
+-- ROWS FOLLOWING
 -- SELECT Year, DepartmentID, Revenue,
 --  sum(Revenue) OVER (PARTITION by DepartmentID
 --  ORDER BY [YEAR]
@@ -44,7 +44,7 @@ GO
 -- ORDER BY departmentID, year;
 
 SELECT Year, DepartmentID, Revenue,
- sum(Revenue) OVER (PARTITION by DepartmentID
+    sum(Revenue) OVER (PARTITION by DepartmentID
  ORDER BY [YEAR]
  ROWS UNBOUNDED PRECEDING) as RowsCumulative
 --  ,sum(Revenue) OVER (PARTITION by DepartmentID

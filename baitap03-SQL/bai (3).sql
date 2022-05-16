@@ -2,6 +2,8 @@
 -- SELECT *
 -- FROM NhanVien
 -- WHERE TenNhanVien = 'Nguyen Van a' or Manhanvien = 'nv1'
+USE KinhDoanh
+GO
 
 select *
 from NhanVien

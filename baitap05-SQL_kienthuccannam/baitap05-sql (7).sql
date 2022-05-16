@@ -1,27 +1,28 @@
 -- 7.Nhân viên vào làm 13/01/1983, nghỉ việc đến thời hiện tại. 
 -- Hãy tính thâm niên nhân viên bao nhiêu ngày, bao nhiêu tháng, bao nhiêu năm.
 
-DECLARE @CURRENTDAY date = GETDATE()
+DECLARE @_NgayHienTai date = GETDATE()
 
---SELECT @CURRENTDAY AS CURRENTDAY
+--SELECT @_NgayHienTai AS CURRENTDAY
 
-DECLARE @DAYINPUT date = '01-13-1983';
+DECLARE @_NgayVaoLam date = '01-13-1983';
 
-DECLARE @DAY int = DAY(@DAYINPUT)
+DECLARE @_NgayInNgayVaoLam int = DAY(@_NgayVaoLam)
 
-DECLARE @MONTH int = MONTH(@DAYINPUT)
+DECLARE @_ThangInNgayVaoLam int = MONTH(@_NgayVaoLam)
 
-DECLARE @YEAR int = YEAR(@DAYINPUT)
+DECLARE @ThangInNgayVaoLam int = YEAR(@_NgayVaoLam)
 
-DECLARE @NAMLAMVIEC INT = YEAR(@CURRENTDAY) - @YEAR
+DECLARE @_NamInNgayVaoLam INT = YEAR(@_NgayHienTai) - @ThangInNgayVaoLam
 
-DECLARE @THANGLAMVIEC INT = @NAMLAMVIEC*12 + MONTH(@CURRENTDAY)-@MONTH
+DECLARE @_ThangDaLam INT = @_NamInNgayVaoLam*12 + MONTH(@_NgayHienTai)-@_ThangInNgayVaoLam
 
-DECLARE @NGAYLAMVIEC INT = 6*4*@THANGLAMVIEC
+DECLARE @_NgayDaLamViec INT = 6*4*@_ThangDaLam
 
-SELECT @NAMLAMVIEC AS NAMLAMVIEC, @THANGLAMVIEC AS THANGDALAMVIEC, @NGAYLAMVIEC AS NGAYDALAMVIEC
+SELECT @_NamInNgayVaoLam AS soNAMLAMVIEC, @_ThangDaLam AS soTHANGDALAMVIEC, @_NgayDaLamViec AS soNGAYDALAMVIEC
 
---SELECT @DAYINPUT AS DAYINPUT,
---@DAY AS N'NGAY' ,
---@MONTH AS N'THANG',
---@YEAR AS N'NAM'
+--SELECT 
+--@_NgayVaoLam AS DAYINPUT,
+--@_NgayInNgayVaoLam AS N'NGAY' ,
+--@_ThangInNgayVaoLam AS N'THANG',
+--@ThangInNgayVaoLam AS N'NAM'

@@ -16,6 +16,8 @@ VALUES
     ('F1', 100, 100, NULL, NULL),
     ('F2', NULL, NULL, 520, 300),
     ('F3', 150, NULL, NULL, 120)
+SELECT *
+FROM tblResource
 
 SELECT [Class],
     [Code],

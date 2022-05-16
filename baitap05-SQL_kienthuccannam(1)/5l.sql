@@ -1,6 +1,7 @@
 --5l. Tim mat hang ban so luong nhieu nhat trong tung nam
 USE B30
 GO
+--Phai khai bao nam de lay moc
 DECLARE @_NamNhapVao INT = 2014
 DECLARE @_SoLuongMatHangBanNhieuNhat int =
 (select MAX(Quantity)

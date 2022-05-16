@@ -1,3 +1,6 @@
+USE KinhDoanh
+go
+
 -- 2.Liệt kê ra các hoá đơn trong tháng 9/2010 (Ngay_Ct, So_Ct, Dien_Giai0, Doanh thu, tiền thuế, Tổng tiền).
 -- SELECT *
 -- from HoaDon

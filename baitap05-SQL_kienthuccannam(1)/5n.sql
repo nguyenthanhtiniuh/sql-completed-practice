@@ -5,7 +5,7 @@ DECLARE @YEAR_INPUT INT = 2014;
 WITH
     TBLDOANHTHUNHIEUNHAT_NAM (DOCDATE, QUANTITY, AMOUNT, ITEMCODE)
     AS
-    
+
     (
         SELECT DocDate, Quantity, Amount, ItemCode
         FROM B30AccDocSales
