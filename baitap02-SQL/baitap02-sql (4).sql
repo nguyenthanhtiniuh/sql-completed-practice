@@ -33,11 +33,9 @@ CREATE TABLE #tblResult
 ;WITH
     tbl
     AS
-
     (
         SELECT *
         FROM #tblResource
-
     )
 INSERT into #tblResult
     (OrderResult,Code,[Value])
@@ -49,8 +47,8 @@ ORDER BY Code,[Value]
 -- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
 DROP TABLE IF EXISTS #tblResult1
 SELECT
-[Code],
-[Value]
+    [Code],
+    [Value]
 INTO #tblResult1
 FROM [#tblResource]
 
@@ -77,7 +75,8 @@ SET
 WHERE Code='C'/* add search conditions here */
 GO
 
-SELECT * From #tblResult1
+SELECT *
+From #tblResult1
 
 SELECT Id,
     ROW_NUMBER
