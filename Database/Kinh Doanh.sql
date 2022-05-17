@@ -1,4 +1,16 @@
-USE [KinhDoanh]
+-- Create a new database called 'KinhDoanh'
+-- Connect to the 'master' database to run this snippet
+USE master
+GO
+-- Create the new database if it does not exist already
+IF NOT EXISTS (
+	SELECT [name]
+		FROM sys.databases
+		WHERE [name] = N'KinhDoanh'
+)
+CREATE DATABASE KinhDoanh
+GO
+use [KinhDoanh]
 GO
 /****** Object:  Table [dbo].[HoaDon]    Script Date: 5/16/2022 3:59:18 PM ******/
 SET ANSI_NULLS ON

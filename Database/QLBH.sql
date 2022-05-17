@@ -1,3 +1,17 @@
+-- Create a new database called 'QLBH'
+-- Connect to the 'master' database to run this snippet
+USE master
+GO
+-- Create the new database if it does not exist already
+IF NOT EXISTS (
+	SELECT [name]
+		FROM sys.databases
+		WHERE [name] = N'QLBH'
+)
+CREATE DATABASE QLBH
+GO
+
+
 USE [QLBH]
 GO
 /****** Object:  Table [dbo].[CTHD]    Script Date: 5/16/2022 4:00:04 PM ******/

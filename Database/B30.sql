@@ -1,18 +1,29 @@
+-- Create a new database called 'B30'
+-- Connect to the 'master' database to run this snippet
+-- Create the new database if it does not exist already
+IF NOT EXISTS (
+	SELECT [name]
+		FROM sys.databases
+		WHERE [name] = N'B30'
+)
+CREATE DATABASE B30
+GO
+
 USE [B30]
 GO
 /****** Object:  UserDefinedFunction [dbo].[RandNumber]    Script Date: 5/16/2022 3:57:38 PM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE FUNCTION [dbo].[RandNumber]() 
-RETURNS INT 
-AS 
-  BEGIN
-	RETURN (SELECT RandNumber
-	FROM vRandNumber)
-END 
-GO
+-- SET ANSI_NULLS ON
+-- GO
+-- SET QUOTED_IDENTIFIER ON
+-- GO
+-- CREATE FUNCTION [dbo].[RandNumber]() 
+-- RETURNS INT 
+-- AS 
+--   BEGIN
+-- 	RETURN (SELECT RandNumber
+-- 	FROM vRandNumber)
+-- END 
+-- GO
 /****** Object:  Table [dbo].[B30AccDocSales]    Script Date: 5/16/2022 3:57:38 PM ******/
 SET ANSI_NULLS ON
 GO
