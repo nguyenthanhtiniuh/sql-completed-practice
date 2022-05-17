@@ -1,4 +1,4 @@
-use TBL 
+USE TBL 
 GO
 --DANH MUC VAT TU
 IF OBJECT_ID('DmVt') IS NOT NULL DROP TABLE DmVt
@@ -38,12 +38,12 @@ FROM DmDt
 IF OBJECT_ID('BanHang') IS NOT NULL DROP TABLE BanHang
 CREATE TABLE BanHang
 (
-    NGAY_CT SMALLDATETIME,
-    SO_CT VARCHAR(20),
-    MA_DT VARCHAR(16),
-    MA_VT VARCHAR(16),
-    SO_LUONG NUMERIC(18,2),
-    TIEN NUMERIC(18)
+    Ngay_Ct smalldatetime,
+    So_Ct varchar(20),
+    Ma_Dt varchar(16),
+    Ma_vt varchar(16),
+    So_Luong numeric(18,2),
+    Tien numeric(18)
 )
 
 -- INSERT INTO BanHang

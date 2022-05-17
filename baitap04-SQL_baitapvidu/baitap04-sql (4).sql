@@ -52,6 +52,15 @@ INSERT into #result
 select 'tong cong', SUM(Stock1), SUM(Stock2), SUM(Stock3)
 from #result
 
+DECLARE @_Str Nvarchar(MAX) = ''
+
+-- Select *
+-- From #B20Item
+
+SELECT @_Str = @_Str  + N'ALTER TABLE #Result Add ' + Code + N' Numeric(18,5)' + CHAR(10)
+FROM #B20Item
+
+EXEC( @_Str)
 
 SELECT *
 FROM #result
