@@ -20,9 +20,9 @@ FROM #tblResource
 
 DROP table if EXISTS #tblResult
 SELECT *
-into #tblREsult
+INTO #tblREsult
 FROM #tblResource
 --SELECT * FROM CMT
-SELECT Code, ValuetblResource, sum(ValuetblResource) OVER (ORDER BY Code ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
+SELECT Code, ValuetblResource, SUM(ValuetblResource) OVER (ORDER BY Code ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)
 FROM #tblResource
 ORDER BY Code

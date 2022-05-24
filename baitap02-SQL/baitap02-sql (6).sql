@@ -82,24 +82,5 @@ SELECT FORMAT (#tblResourceB.DateRB, 'dd-MM-yyyy') as date,
 FROM #tblResourceB
     right JOIN #tblResourceA
     ON #tblResourceB.CodeRB=#tblResourceA.CodeRA
-    -- WHERE #tblResourceA.DateRA=#tblResourceB.DateRB
+-- WHERE #tblResourceA.DateRA=#tblResourceB.DateRB
 ORDER by [date]
-
--- ;WITH
---     tbl
---     AS
-    
---     (
---         SELECT distinct FORMAT (#tblResourceB.DateRB, 'dd-MM-yyyy') as date,
---             [DateRB],
---             [CodeRB], NameRA
---         FROM #tblResourceB
---             right JOIN #tblResourceA
---             ON #tblResourceB.CodeRB=#tblResourceA.CodeRA
---     )
--- SELECT *
--- FROM tbl
---     INNER JOIN #tblResourceB
---     ON tbl.[DateRB]=#tblResourceB.DateRB
--- WHERE tbl.DateRB=#tblResourceB.DateRB
--- HAVING #tblResourceA.DateRA<#tblResourceB.DateRB

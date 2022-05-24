@@ -7,8 +7,10 @@ INTO #tblBanHang
 FROM BanHang
 WHERE NGAY_CT BETWEEN '2013-01-01' AND '2013-01-31'
 
+
+
 -- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
 SELECT *
 FROM [#tblBanHang]
-WHERE #tblBanHang.SO_LUONG=(SELECT MAX(#tblBanHang.SO_LUONG)
+WHERE #tblBanHang.So_Luong=(SELECT MAX(#tblBanHang.So_Luong)
 FROM #tblBanHang)

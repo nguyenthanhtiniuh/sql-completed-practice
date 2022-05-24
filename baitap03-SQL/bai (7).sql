@@ -2,12 +2,12 @@
 -- UPDATE NhanVien 
 -- set BirthDay = '1967-01-01'
 -- where GioiTinh = 'nam'
-use KinhDoanh
-go
+USE KinhDoanh
+GO
 
 UPDATE NhanVien 
-set BirthDay = '1972-01-01'
-where GioiTinh = 'nu'
+SET BirthDay = '1972-01-01'
+WHERE GioiTinh = 'nu'
 
 IF OBJECT_ID('Tempdb..#tblNhanvienNu') IS NOT NULL DROP TABLE #tblNhanVienNu
 SELECT *
@@ -15,7 +15,7 @@ INTO #tblNhanVienNu
 FROM NhanVien
 WHERE GioiTinh LIKE 'nu'
 
-DECLARE @_Namhientai int = YEAR(GETDATE());
+DECLARE @_Namhientai INT = YEAR(GETDATE());
 
 SELECT *
 FROM #tblNhanVienNu
@@ -40,7 +40,7 @@ FROM NhanVien
 ALTER TABLE [#tblDefault]
 ADD CONSTRAINT NGAY_DF DEFAULT GETDATE() FOR BirthDay
 ------------------------
-select [Manhanvien],
+SELECT [Manhanvien],
     [TenNhanVien],
     [GioiTinh],
     [BirthDay],

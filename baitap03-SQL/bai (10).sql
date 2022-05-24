@@ -1,1 +1,1 @@
--- 10.Dùng câu truy vấn SQL thêm vào bảng #tblCt các filed Ten_Vt, Ten_Kho, Ten_Dt.
+-- 10.Dùng câu truy vấn SQL thêm vào bảng #tblCt các fileed Ten_Vt, Ten_Kho, Ten_Dt.

@@ -1,32 +1,32 @@
 /****** Script for SelectTopNRows command from SSMS  ******/
 --SET DATEFORMAT 'DD-MM-YYYY'
-use KinhDoanh
-go
-drop TABLE if exists #tblMaMatHangThang9
-Create table #tblMaMatHangThang9
+USE KinhDoanh
+GO
+DROP TABLE IF EXISTS #tblMaMatHangThang9
+CREATE TABLE #tblMaMatHangThang9
 (
     MaMatHang nvarchar(4)
 )
 
 ;WITH
     tbl
-    as
+    AS
     (
         SELECT HoaDonChiTiet.Sohd
       , [MaMatHang]
       , [SoLuong]
 	  , HoaDon.Ngay
-	  , FORMAT (HoaDon.Ngay, 'dd/MM/yyyy ') as date
+	  , FORMAT (HoaDon.Ngay, 'dd/MM/yyyy ') AS DATE
         FROM [KinhDoanh].[dbo].[HoaDonChiTiet]
             JOIN HoaDon
             ON HoaDonChiTiet.Sohd=HoaDon.Sohd
-        where Ngay between '2010-09-01 00:00:00.000' and '2010-09-30 00:00:00.000'
+        WHERE Ngay BETWEEN '2010-09-01 00:00:00.000' AND '2010-09-30 00:00:00.000'
         --WHERE (cast (HoaDon.Ngay as date)) between '20100901' and '20100931' 
     )
-insert into #tblMaMatHangThang9
+INSERT INTO #tblMaMatHangThang9
     (MaMatHang)
-select MaMatHang
-from tbl
+SELECT MaMatHang
+FROM tbl
 
 SELECT *
 FROM #tblMaMatHangThang9
