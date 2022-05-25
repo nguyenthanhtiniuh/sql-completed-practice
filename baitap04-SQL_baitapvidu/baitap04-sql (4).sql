@@ -73,6 +73,7 @@ FROM cte
 
 SELECT *
 INTO #tblResult
+
 FROM(
 SELECT GroupCode, [ItemCode], Name,
         [Stock1],
