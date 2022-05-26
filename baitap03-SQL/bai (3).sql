@@ -5,15 +5,15 @@
 USE KinhDoanh
 GO
 
-select *
-from NhanVien
+SELECT *
+FROM NhanVien
 
 SELECT [Sohd],
     [Ngay],
     [Makhachhang],
     [HoaDon].[Manhanvien], TenNhanVien,
     [TriGia]
-from HoaDon
+FROM HoaDon
     JOIN NhanVien
     ON HoaDon.Manhanvien=NhanVien.Manhanvien
-wHERE year(Ngay) = 2010 and MONTH(Ngay) = 9 AND NhanVien.TenNhanVien='Nguyen Van A'
+WHERE year(Ngay) = 2010 AND MONTH(Ngay) = 9 AND NhanVien.TenNhanVien='Nguyen Van A'

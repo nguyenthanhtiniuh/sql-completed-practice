@@ -27,7 +27,7 @@ INTO #tblNhanVienNam
 FROM NhanVien
 WHERE GioiTinh LIKE 'nam'
 
-select *
+SELECT *
 from #tblNhanVienNam
 WHERE @_Namhientai-YEAR(BirthDay)>=55
 

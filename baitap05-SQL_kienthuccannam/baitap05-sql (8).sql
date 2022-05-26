@@ -1,5 +1,5 @@
 -- 8.Tạo bảng tất cả thứ của tất cả các ngày trong một tháng từ một ngày cho trước.
-use TBL
+USE TBL
 DROP TABLE if EXISTS #Dates
 CREATE TABLE #Dates
 (
@@ -40,4 +40,5 @@ BEGIN
 	SET @Counter = @Counter + 1
 END
 
-select * from #Dates
+SELECT *
+FROM #Dates

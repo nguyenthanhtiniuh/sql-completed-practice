@@ -8,20 +8,20 @@ GO
 
 DROP TABLE if EXISTS #tblTopHoaDonThang9nam2010
 
-select *
-into #tblTopHoaDonThang9nam2010
-from(
+SELECT *
+INTO #tblTopHoaDonThang9nam2010
+FROM(
 SELECT
-        top 3
+        TOP 3
         HoaDonChiTiet.SoLuong,
         HoaDonChiTiet.Sohd, MaMatHang, Ngay
     FROM HoaDonChiTiet
         JOIN HoaDon
-        on HoaDonChiTiet.Sohd=HoaDon.Sohd
+        ON HoaDonChiTiet.Sohd=HoaDon.Sohd
     WHERE HoaDon.Ngay BETWEEN '2010-09-01 00:00:00.000'
-and '2010-09-30 00:00:00.000'
+AND '2010-09-30 00:00:00.000'
     ORDER BY HoaDonChiTiet.SoLuong DESC
-) as tbl
+) AS tbl
 
 -- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
 SELECT *

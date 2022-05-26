@@ -2,7 +2,7 @@
 USE B30
 GO
 --DONE--5F
-DROP TABLE if EXISTS #tblKhachMuaHangThang7
+DROP TABLE IF EXISTS #tblKhachMuaHangThang7
 SELECT [STT],
     [ItemCode],
     [CustomerCode],
@@ -17,5 +17,5 @@ FROM B30AccDocSales
 -- ON B30AccDocSales.CustomerCode=B20Customer.CustomerCode
 WHERE (DocDate BETWEEN '20140701' AND '20140731') AND Quantity>0
 
-select *
-from #tblKhachMuaHangThang7
+SELECT *
+FROM #tblKhachMuaHangThang7

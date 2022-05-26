@@ -52,7 +52,7 @@ CREATE TABLE #tblResult
 SET
 IDENTITY_INSERT #tblResult  ON
 
-insert into #tblResult
+INSERT INTO #tblResult
     ([Id],
     [Code],
     [InputValue],

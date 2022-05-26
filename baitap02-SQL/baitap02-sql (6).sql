@@ -9,25 +9,21 @@ CREATE TABLE #tblResourceA
 )
 
 INSERT INTO #tblResourceA
-    SELECT '20130101', 'A', 'Mr.NAM'
-UNION ALL
-    SELECT
-        '20130515', 'A', 'Mr.TUNG'
-UNION ALL
-    SELECT
-        '20130201', 'B', 'Mrs.LAM'
-UNION ALL
-    SELECT
-        '20130430', 'B', 'Mrs.HOA'
-UNION ALL
-    SELECT
-        '20130414', 'C', 'Ms.HANH'
-UNION ALL
-    SELECT
-        '20130623', 'C', 'Ms.HAN'
-UNION ALL
-    SELECT
-        '20130830', 'C', 'Ms.HUONG'
+VALUES
+    ('20130101', 'A', 'Mr.NAM')
+,
+    ('20130515', 'A', 'Mr.TUNG')
+,
+    ('20130201', 'B', 'Mrs.LAM')
+,
+    ('20130430', 'B', 'Mrs.HOA')
+,
+    ('20130414', 'C', 'Ms.HANH')
+,
+    ('20130623', 'C', 'Ms.HAN')
+,
+    ('20130830', 'C', 'Ms.HUONG')
+
 SELECT *
 FROM #tblResourceA
 
@@ -39,32 +35,24 @@ CREATE TABLE #tblResourceB
 )
 
 INSERT INTO #tblResourceB
-    SELECT
-        '20130101', 'A'
-UNION ALL
-    SELECT
-        '20130311', 'A'
-UNION ALL
-    SELECT
-        '20130615', 'A'
-UNION ALL
-    SELECT
-        '20130101', 'B'
-UNION ALL
-    SELECT
-        '20130214', 'B'
-UNION ALL
-    SELECT
-        '20130502', 'B'
-UNION ALL
-    SELECT
-        '20130211', 'C'
-UNION ALL
-    SELECT
-        '20130418', 'C'
-UNION ALL
-    SELECT
-        '20130817', 'C'
+VALUES
+    ('20130101', 'A')
+,
+    ('20130311', 'A')
+,
+    ('20130615', 'A')
+,
+    ('20130101', 'B')
+,
+    ('20130214', 'B')
+,
+    ('20130502', 'B')
+,
+    ('20130211', 'C')
+,
+    ('20130418', 'C')
+,
+    ('20130817', 'C')
 SELECT *
 FROM #tblResourceB
 
@@ -76,11 +64,11 @@ CREATE TABLE #tblResult
     Nameresult NVARCHAR(50)
 )
 
-SELECT FORMAT (#tblResourceB.DateRB, 'dd-MM-yyyy') as date,
+SELECT FORMAT (#tblResourceB.DateRB, 'dd-MM-yyyy') AS DATE,
     [DateRB],
     [CodeRB], NameRA
 FROM #tblResourceB
-    right JOIN #tblResourceA
+    RIGHT JOIN #tblResourceA
     ON #tblResourceB.CodeRB=#tblResourceA.CodeRA
 -- WHERE #tblResourceA.DateRA=#tblResourceB.DateRB
-ORDER by [date]
+ORDER BY [date]

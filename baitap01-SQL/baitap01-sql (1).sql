@@ -1,7 +1,7 @@
 USE TBL 
 GO
 --DANH MUC VAT TU
-IF OBJECT_ID('DmVt') IS NOT NULL DROP TABLE DmVt
+DROP TABLE IF EXISTS DmVt
 CREATE TABLE DmVt
 (
     Ma_Vt VARCHAR(16),
@@ -14,15 +14,15 @@ VALUES
     ('X', 'XE'),
     ('T', 'TUI'),
     ('V', 'VAI')
+
 --DANH MUC DT
-IF OBJECT_ID('DmDt') IS NOT NULL DROP TABLE DmDt
+DROP TABLE IF EXISTS DmDt
 CREATE TABLE DmDt
 (
     Ma_Dt VARCHAR(16),
     Ten_Dt NVARCHAR(128)
 )
 -- TRUNCATE TABLE #DMVT
-
 INSERT INTO DmDt
 VALUES
     ('VT001', 'D TU 001'),
@@ -31,6 +31,7 @@ VALUES
     ('DT004', 'D TU 004'),
     ('DT005', 'D TU 005'),
     ('DT006', 'D TU 006')
+
 SELECT *
 FROM DmDt
 
@@ -41,7 +42,7 @@ CREATE TABLE BanHang
     Ngay_Ct smalldatetime,
     So_Ct varchar(20),
     Ma_Dt varchar(16),
-    Ma_vt varchar(16),
+    Ma_Vt varchar(16),
     So_Luong numeric(18,2),
     Tien numeric(18)
 )
@@ -61,14 +62,14 @@ CREATE TABLE BanHang
 -- ((SELECT CAST('2013-01-30 12:35:00' AS smalldatetime)),'AA','VT001','G',5,1600000)
 INSERT INTO BanHang
 VALUES
-    ((SELECT CAST('2014-01-10 12:35:00' AS smalldatetime)), 'AA', 'VT002', 'B', 22, 1500000),
-    ((SELECT CAST('2014-02-10 12:35:00' AS smalldatetime)), 'AA', 'VT002', 'B', 22, 1500000),
-    ((SELECT CAST('2014-03-10 12:35:00' AS smalldatetime)), 'AA', 'VT002', 'B', 22, 1500000),
-    ((SELECT CAST('2014-04-10 12:35:00' AS smalldatetime)), 'AA', 'VT002', 'B', 22, 1500000),
-    ((SELECT CAST('2013-01-10 12:35:00' AS smalldatetime)), 'AA', 'VT003', 'X', 1, 1500000),
-    ((SELECT CAST('2013-02-10 12:35:00' AS smalldatetime)), 'AA', 'VT003', 'X', 2, 1500000),
-    ((SELECT CAST('2013-03-10 12:35:00' AS smalldatetime)), 'AA', 'VT003', 'X', 5, 1500000),
-    ((SELECT CAST('2013-04-10 12:35:00' AS smalldatetime)), 'AA', 'VT003', 'X', 15, 1500000)
+    ((SELECT CAST('2014-01-10 12:35:00' AS SMALLDATETIME)), 'AA', 'VT002', 'B', 22, 1500000),
+    ((SELECT CAST('2014-02-10 12:35:00' AS SMALLDATETIME)), 'AA', 'VT002', 'B', 22, 1500000),
+    ((SELECT CAST('2014-03-10 12:35:00' AS SMALLDATETIME)), 'AA', 'VT002', 'B', 22, 1500000),
+    ((SELECT CAST('2014-04-10 12:35:00' AS SMALLDATETIME)), 'AA', 'VT002', 'B', 22, 1500000),
+    ((SELECT CAST('2013-01-10 12:35:00' AS SMALLDATETIME)), 'AA', 'VT003', 'X', 1, 1500000),
+    ((SELECT CAST('2013-02-10 12:35:00' AS SMALLDATETIME)), 'AA', 'VT003', 'X', 2, 1500000),
+    ((SELECT CAST('2013-03-10 12:35:00' AS SMALLDATETIME)), 'AA', 'VT003', 'X', 5, 1500000),
+    ((SELECT CAST('2013-04-10 12:35:00' AS SMALLDATETIME)), 'AA', 'VT003', 'X', 15, 1500000)
 
 SELECT *
 FROM BanHang

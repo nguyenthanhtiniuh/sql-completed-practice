@@ -4,11 +4,11 @@ GO
 --Phai khai bao nam de lay moc
 DECLARE @_NamNhapVao INT = 2014
 DECLARE @_SoLuongMatHangBanNhieuNhat int =
-(select MAX(Quantity)
-from B30AccDocSales
+(SELECT MAX(Quantity)
+FROM B30AccDocSales
 WHERE YEAR(DocDate)=@_NamNhapVao)
 
-SELECT @_SoLuongMatHangBanNhieuNhat as MatHangCoSoLuongBanNhieuNhat
+SELECT @_SoLuongMatHangBanNhieuNhat AS MatHangCoSoLuongBanNhieuNhat
 
 -- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
 SELECT *

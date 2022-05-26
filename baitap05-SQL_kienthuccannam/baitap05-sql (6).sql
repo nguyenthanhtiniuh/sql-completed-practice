@@ -4,7 +4,7 @@ GO
 
 DECLARE @_NgayHienTai DATETIME
 
-set @_NgayHienTai = GETDATE()
+SET @_NgayHienTai = GETDATE()
 
     SELECT CONVERT(VARCHAR(25),DATEADD(dd,-(DAY(@_NgayHienTai)-1),@_NgayHienTai),101) AS Date_Value,
 

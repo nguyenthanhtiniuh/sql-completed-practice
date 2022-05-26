@@ -7,7 +7,7 @@ CREATE TABLE #tblResuorce
     Code nvarchar(50),
     Value int
 )
-insert into #tblResuorce
+INSERT INTO #tblResuorce
 VALUES
     ('A', 100),
     ('B', 100),
@@ -21,31 +21,31 @@ FROM #tblResuorce
 ORDER BY Id
 
 
-drop TABLE if EXISTS #tblResource2
+DROP TABLE IF EXISTS #tblResource2
 GO
 
-select *
-into #tblResource2
-from
+SELECT *
+INTO #tblResource2
+FROM
     (
-  select Code, [Value]
-    from #tblResuorce
+  SELECT Code, [Value]
+    FROM #tblResuorce
 ) d
 PIVOT
 (  
       max(VALUE) FOR Code In(A,B,C,D,E)
   
-) as piv;
+) AS piv;
 
 SELECT *
-from #tblResource2
+FROM #tblResource2
 GO
 
 SELECT [VALUE],
     [Code]
 FROM
     (
-    select [A],
+    SELECT [A],
         [B],
         [C],
         [D],

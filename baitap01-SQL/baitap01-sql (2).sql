@@ -3,10 +3,11 @@
 --NHIEU NHAT TRONG KHOANG THOI GIAN TU '01/01/2013' DEN '31/01/2013'
 USE TBL
 GO
+
 SELECT *
 INTO #tblBanHang
 FROM BanHang
-WHERE ngay_ct BETWEEN '2013-01-01' AND '2013-01-31'
+WHERE Ngay_ct BETWEEN '2013-01-01' AND '2013-01-31'
 
 -- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
 SELECT *

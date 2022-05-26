@@ -1,6 +1,6 @@
 --DONE--5G.TIM KHACH HANG KHONG MUA HANG TRUOC THANG 7
-use B30
-go
+USE B30
+GO
 SELECT
     -- [STT],
     [ItemCode],

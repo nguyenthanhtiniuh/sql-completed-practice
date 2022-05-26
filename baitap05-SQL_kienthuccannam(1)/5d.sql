@@ -8,28 +8,28 @@ GO
 -- IF OBJECT_ID('[dbo].[#tblB30AccDocSalesNam2014]', 'U') IS NOT NULL
 -- DROP TABLE [dbo].[#tblB30AccDocSalesNam2014]
 
-DROP TABLE if EXISTS #tblB30AccDocSalesNam2014
+DROP TABLE IF EXISTS #tblB30AccDocSalesNam2014
 
 GO
 SELECT *
-into #tblB30AccDocSalesNam2014
+INTO #tblB30AccDocSalesNam2014
 FROM B30AccDocSales
 WHERE YEAR(DocDate)= 2014
 
 -- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
 --Tim nhan Vien Ban Hang Nhieu Nhat Theo Thang
-declare @_ThangInput int =6
+decLare @_ThangInput int =6
 
 SELECT MONTH(DocDate), Amount
 FROM #tblB30AccDocSalesNam2014
 WHERE Amount = (
 SELECT MAX(Amount)
-from #tblB30AccDocSalesNam2014
+FROM #tblB30AccDocSalesNam2014
 WHERE MONTH(DocDate) = @_ThangInput
 )
 GO
 
-declare @_ThangInput int =12
+DECLARE @_ThangInput int =12
 SELECT [STT],
     [#tblB30AccDocSalesNam2014].Employeecode,
     [Quantity],
@@ -41,7 +41,7 @@ FROM [#tblB30AccDocSalesNam2014]
 WHERE #tblB30AccDocSalesNam2014.Amount=(
 SELECT MAX
 (Amount)
-from #tblB30AccDocSalesNam2014
+FROM #tblB30AccDocSalesNam2014
 WHERE MONTH
 (DocDate) = @_ThangInput
 )

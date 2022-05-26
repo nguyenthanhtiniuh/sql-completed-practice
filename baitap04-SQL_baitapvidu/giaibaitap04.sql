@@ -28,6 +28,6 @@ FROM(
  )AS SOURCETABLE
  PIVOT
  ( 
- sum(Quantity) for WarehouseCode IN (Stock1,Stock2,Stock3)
+ SUM(Quantity) for WarehouseCode IN (Stock1,Stock2,Stock3)
  )AS PIVOTTABLE
 -- group by ItemCode

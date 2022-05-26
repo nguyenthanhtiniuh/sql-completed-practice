@@ -1,8 +1,8 @@
 --5h. Tim khach hang chi mua hang QUANTITY>0 trong thang 7 nam 2014
 USE B30
- GO
+GO
 
-drop TABLE if EXISTS #tblTatCaKhachKhongMuaHangTrongThanh07
+DROP TABLE IF EXISTS #tblTatCaKhachKhongMuaHangTrongThanh07
 SELECT [STT],
     [ItemCode],
     [CustomerCode],

@@ -32,5 +32,5 @@ FROM
 UNPIVOT(
     VALUE FOR [Code] In (A,B,C,D)
 ) as unpvt;
-go
+GO
 

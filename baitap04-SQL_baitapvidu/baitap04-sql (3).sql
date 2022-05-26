@@ -14,14 +14,12 @@ CREATE TABLE #b20customer
 	Name nvarchar(30)
 )
 INSERT INTO #b20customer
-SELECT
-	'ABC', 'Cong Ty ABC'
+VALUES
+	('ABC', 'Cong Ty ABC')
+,
+	('BCD', 'Cong Ty BCD')
 
-INSERT INTO #b20customer
-SELECT
-	'BCD', 'Cong Ty BCD'
-
-IF OBJECT_ID('tempdb..#b30accdoc') IS Not NULL DROP TABLE #b30accdoc
+IF OBJECT_ID('tempdb..#b30accdoc') IS NOT NULL DROP TABLE #b30accdoc
 CREATE TABLE #b30accdoc
 (
 	Id int identity(1,1),

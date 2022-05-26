@@ -2,13 +2,13 @@
 --cua cac bo phan trong tung thang trong nam 2014
 USE B30
 GO
-drop table if EXISTS #tblDoanhSoBanHangNam2014
+DROP TABLE IF EXISTS #tblDoanhSoBanHangNam2014
 SELECT *
 INTO #tblDoanhSoBanHangNam2014
 FROM B30AccDocSales
 WHERE YEAR(DocDate) = 2014
 
-drop table if EXISTS #tblDoanhSoBanHangThang1
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang1
 SELECT *
 INTO #tblDoanhSoBanHangThang1
 FROM #tblDoanhSoBanHangNam2014
@@ -21,7 +21,7 @@ WHERE Amount<
 FROM #tblDoanhSoBanHangThang1 
 )
 
-drop table if EXISTS #tblDoanhSoBanHangThang2
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang2
 SELECT *
 INTO #tblDoanhSoBanHangThang2
 FROM #tblDoanhSoBanHangNam2014
@@ -34,7 +34,7 @@ WHERE Amount<
 FROM #tblDoanhSoBanHangThang2 
 )
 
-drop table if EXISTS #tblDoanhSoBanHangThang3
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang3
 SELECT *
 INTO #tblDoanhSoBanHangThang3
 FROM #tblDoanhSoBanHangNam2014
@@ -47,7 +47,7 @@ WHERE Amount<
 FROM #tblDoanhSoBanHangThang3 
 )
 
-drop table if EXISTS #tblDoanhSoBanHangThang4
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang4
 SELECT *
 INTO #tblDoanhSoBanHangThang4
 FROM #tblDoanhSoBanHangNam2014
@@ -61,7 +61,7 @@ WHERE Amount<
 FROM #tblDoanhSoBanHangThang4 
 )
 
-drop table if EXISTS #tblDoanhSoBanHangThang5
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang5
 SELECT *
 INTO #tblDoanhSoBanHangThang5
 FROM #tblDoanhSoBanHangNam2014
@@ -74,7 +74,7 @@ WHERE Amount<
 FROM #tblDoanhSoBanHangThang5 
 )
 
-drop table if EXISTS #tblDoanhSoBanHangThang6
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang6
 SELECT *
 INTO #tblDoanhSoBanHangThang6
 FROM #tblDoanhSoBanHangNam2014
@@ -88,7 +88,7 @@ WHERE Amount<
 FROM #tblDoanhSoBanHangThang6 
 )
 
-drop table if EXISTS #tblDoanhSoBanHangThang7
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang7
 SELECT *
 INTO #tblDoanhSoBanHangThang7
 FROM #tblDoanhSoBanHangNam2014
@@ -101,7 +101,7 @@ WHERE Amount<
 FROM #tblDoanhSoBanHangThang7 
 )
 
-drop table if EXISTS #tblDoanhSoBanHangThang8
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang8
 SELECT *
 INTO #tblDoanhSoBanHangThang8
 FROM #tblDoanhSoBanHangNam2014
@@ -115,7 +115,7 @@ WHERE Amount<
 FROM #tblDoanhSoBanHangThang8 
 )
 
-drop table if EXISTS #tblDoanhSoBanHangThang9
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang9
 SELECT *
 INTO #tblDoanhSoBanHangThang9
 FROM #tblDoanhSoBanHangNam2014
@@ -129,7 +129,7 @@ WHERE Amount<
 FROM #tblDoanhSoBanHangThang9 
 )
 
-drop table if EXISTS #tblDoanhSoBanHangThang10
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang10
 SELECT *
 INTO #tblDoanhSoBanHangThang10
 FROM #tblDoanhSoBanHangNam2014
@@ -144,7 +144,7 @@ FROM #tblDoanhSoBanHangThang10
 )
 
 
-drop table if EXISTS #tblDoanhSoBanHangThang11
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang11
 SELECT *
 INTO #tblDoanhSoBanHangThang11
 FROM #tblDoanhSoBanHangNam2014
@@ -158,7 +158,7 @@ FROM #tblDoanhSoBanHangThang11
 )
 
 
-drop table if EXISTS #tblDoanhSoBanHangThang12
+DROP TABLE IF EXISTS #tblDoanhSoBanHangThang12
 SELECT *
 INTO #tblDoanhSoBanHangThang12
 FROM #tblDoanhSoBanHangNam2014

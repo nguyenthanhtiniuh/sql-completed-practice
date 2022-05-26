@@ -1,17 +1,17 @@
 --CHO BANG DU LIEU CO MOT SO COT THONG TIN KHAI BAO KIEU DU LIEU VARCHAR(64).
 --HAY CHINH CAC COT NAY THANH KIEU NVARCHAR(128)
-use tbl 
-go
+USE tbl 
+GO
 
 -- CREATE TABLE #tbl
 -- (
 --     Ten VARCHAR(64),
 --     Id VARCHAR(64)
 -- )
-DROP table if EXISTS #tbl
+DROP TABLE IF EXISTS #tbl
 SELECT *
-into #tbl
-from tblABC
+INTO #tbl
+FROM tblABC
 
 SELECT *
 FROM #tbl
@@ -28,4 +28,4 @@ FROM #tbl
 -- Select rows from a Table or View '[TableOrViewName]' in schema '[dbo]'
 SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH
 FROM INFORMATION_SCHEMA.COLUMNS
-where TABLE_NAME = '#tbl'
+WHERE TABLE_NAME = '#tbl'

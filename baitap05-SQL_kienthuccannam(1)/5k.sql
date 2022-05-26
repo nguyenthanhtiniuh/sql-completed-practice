@@ -2,7 +2,7 @@
 USE B30 
 GO
 
-DROP table if EXISTS #tblDoanhSoBanHangTungMatHang2014
+DROP TABLE IF EXISTS #tblDoanhSoBanHangTungMatHang2014
 SELECT ItemCode, Amount, DocDate,
 	CASE MONTH(DocDate)
 		WHEN 1 THEN (Amount)
@@ -55,7 +55,7 @@ SELECT ItemCode, Amount, DocDate,
 INTO #tblDoanhSoBanHangTungMatHang2014
 FROM B30AccDocSales
 WHERE YEAR(DocDate)=2014
-order BY DocDate
+ORDER BY DocDate
 
 -- SELECT *
 -- FROM #tblDoanhSoBanHangTungMatHang2014

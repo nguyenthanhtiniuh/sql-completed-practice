@@ -3,9 +3,9 @@
 -- “DebitAccount LIKE ‘111%’ OR DebitAccount LIKE ‘112%’ 
 -- OR DebitAccount LIKE ‘113%’ OR DebitAccount LIKE ‘131%’”
 
-go
-use TBL
-go
+GO
+USE TBL
+GO
 DECLARE @STR NVARCHAR(100) = '111,112,113,131,115'
 SELECT CONCAT(',',@STR)
 

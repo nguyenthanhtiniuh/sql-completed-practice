@@ -5,7 +5,7 @@
 USE TBL
 GO
 
-drop TABLE if EXISTS #B20Warehouse
+DROP TABLE if EXISTS #B20Warehouse
 CREATE TABLE #B20Warehouse
 (
     STT INT IDENTITY(1,1) NOT NULL,
@@ -22,23 +22,23 @@ VALUES
 SELECT *
 FROM #B20Warehouse
 
-drop TABLE if EXISTS #tblResult
+DROP TABLE IF EXISTS #tblResult
 CREATE TABLE #tblResult
 (
     STT INT IDENTITY(1,1) NOT NULL,
     WarehouseCode nvarchar(50),
     Decription NVARCHAR(50)
 )
-go
+GO
 
-insert into #tblResult
+INSERT INTO #tblResult
     (WarehouseCode)
 SELECT WarehouseCode
-from #B20Warehouse
+FROM #B20Warehouse
 
 UPDATE #tblResult
 SET Decription = 'Co ma long tai dong "0001" '
-WHERE WarehouseCode like 'A%%' and WarehouseCode not like 'A';
+WHERE WarehouseCode LIKE 'A%%' AND WarehouseCode NOT LIKE 'A';
 
 UPDATE #tblResult
 SET Decription = '
