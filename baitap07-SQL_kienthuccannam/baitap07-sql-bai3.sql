@@ -1,6 +1,6 @@
 --3.TIM CAC BANG,VIEW CO SU DUNG COT CUSTOMERCODE
 --TIM CAC BANG
-use B30
+USE B30
 GO
 SELECT
   sys.columns.name AS ColumnName,

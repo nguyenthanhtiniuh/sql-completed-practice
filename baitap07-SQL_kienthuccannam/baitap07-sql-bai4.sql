@@ -4,5 +4,5 @@
 SELECT DISTINCT sysobjects.name
 FROM syscomments
     INNER JOIN sysobjects
-    on syscomments.id=sysobjects.id
+    ON syscomments.id=sysobjects.id
 WHERE syscomments.text LIKE '%CUSTOMERS%'

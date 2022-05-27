@@ -5,8 +5,8 @@ GO
 -- Create the new database if it does not exist already
 IF NOT EXISTS (
 	SELECT [name]
-		FROM sys.databases
-		WHERE [name] = N'TBL'
+FROM sys.databases
+WHERE [name] = N'TBL'
 )
 CREATE DATABASE TBL
 GO
