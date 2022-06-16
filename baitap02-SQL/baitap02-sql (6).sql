@@ -24,8 +24,7 @@ VALUES
 ,
     ('20130830', 'C', 'Ms.HUONG')
 
-SELECT *
-FROM #tblResourceA
+-- SELECT * FROM #tblResourceA
 
 IF OBJECT_ID('Tempdb..#tblResourceB') IS NOT NULL DROP TABLE #tblResourceB
 CREATE TABLE #tblResourceB
@@ -53,9 +52,7 @@ VALUES
     ('20130418', 'C')
 ,
     ('20130817', 'C')
-SELECT *
-FROM #tblResourceB
-
+-- SELECT * FROM #tblResourceB
 IF OBJECT_ID('Tempdb..#tblResult') IS NOT NULL DROP TABLE #tblResult
 CREATE TABLE #tblResult
 (
@@ -64,11 +61,42 @@ CREATE TABLE #tblResult
     Nameresult NVARCHAR(50)
 )
 
-SELECT FORMAT (#tblResourceB.DateRB, 'dd-MM-yyyy') AS DATE,
-    [DateRB],
-    [CodeRB], NameRA
-FROM #tblResourceB
-    RIGHT JOIN #tblResourceA
-    ON #tblResourceB.CodeRB=#tblResourceA.CodeRA
--- WHERE #tblResourceA.DateRA=#tblResourceB.DateRB
-ORDER BY [date]
+DROP TABLE if EXISTS #tblNewtable
+SELECT FORMAT(t1.DateRB, 'dd-MM-yyyy') AS DATErb,
+    [t1].[CodeRB],
+    FORMAT(t2.DateRA, 'dd-MM-yyyy') as datera,
+    [t2].[CodeRA],
+    [t2].[NameRA]
+INTO #tblNewtable
+FROM #tblResourceB t1
+    JOIN(
+select *
+    FROM #tblResourceA
+-- GROUP BY CodeRB
+)t2
+    ON t1.CodeRB=t2.CodeRA
+
+-- ORDER BY t1.DateRB
+-- where t1.DateRB>=t2.DateRA
+
+-- select * from #tblResult
+
+-- SELECT FORMAT (#tblResourceB.DateRB, 'dd-MM-yyyy') AS DATE,
+--     [DateRB],
+--     [CodeRB], NameRA
+-- FROM #tblResourceB
+--     RIGHT JOIN #tblResourceA
+--     ON #tblResourceB.CodeRB=#tblResourceA.CodeRA
+-- -- WHERE #tblResourceA.DateRA=#tblResourceB.DateRB
+-- ORDER BY [date]
+
+-- select 
+-- [DateRA],
+-- [DATErb],
+-- [CodeRA],
+-- [NameRA] from #tblNewtable
+
+SELECT distinct DATErb, CodeRB
+FROM #tblNewtable
+ORDER BY CodeRB
+-- ,MONTH(DATErb)
